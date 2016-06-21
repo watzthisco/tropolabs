@@ -1,0 +1,1 @@
+/* * Tropo Learning Lab - Send and Receive SMS * Level: Beginner */function reverse(s) {  return s.split('').reverse().join('');}var reversedMessage = reverse(currentCall.initialText);say(reversedMessage);
