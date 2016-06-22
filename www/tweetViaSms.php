@@ -46,10 +46,6 @@ $key = rawurlencode($consumer_secret)."&".rawurlencode($token_secret);
 // generate the hash
 $signature = rawurlencode(base64_encode(hash_hmac('sha1', $base_string, $key, true)));
 
-// this time we're using a normal GET query, and we're only encoding the query params
-// (without the oauth params)
-//$url .= "?".http_build_query($query);
-//$url=str_replace("&amp;","&",$url); //Patch by @Frewuill
 
 $oauth['oauth_signature'] = $signature; // don't want to abandon all that work!
 ksort($oauth); // probably not necessary, but twitter's demo does it
@@ -61,12 +57,8 @@ $oauth = array_map("add_quotes", $oauth);
 // this is the full value of the Authorization line
 $auth = "OAuth " . urldecode(http_build_query($oauth, '', ', '));
 
-// if you're doing post, you need to skip the GET building above
-// and instead supply query parameters to CURLOPT_POSTFIELDS
-$postfields = $querystring;
-
 $options = array( CURLOPT_HTTPHEADER => array("Authorization: $auth"),
-                  CURLOPT_POSTFIELDS => $postfields,
+                  CURLOPT_POSTFIELDS => $querystring,
                   CURLOPT_HEADER => false,
                   CURLOPT_URL => $url,
                   CURLOPT_RETURNTRANSFER => true,
@@ -88,5 +80,5 @@ foreach ($twitter_data as &$value) {
 }
 
 //log($tweetout);
-//say("tweeted it. $currentCall->initialText");
+//say("tweeted it.");
 ?>
