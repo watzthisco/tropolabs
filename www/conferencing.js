@@ -4,10 +4,12 @@
  */
 
 //todo: figure out how to have the app call someone and place them into conference
+call("+19167305777");
+call("+19164699971");
 
-say("Welcome to the conference setup app");
+say("Welcome to the conference call system.");
 
-addPeople();
+//addPeople();
 
 conference("5555", {
     terminator: "*",
@@ -18,7 +20,7 @@ conference("5555", {
 });
 
 function addPeople(){
-    var shouldAdd = false;
+    var shouldAdd = true;
     while (shouldAdd === true) {
         ask("Enter a 10-digit number of someone to add to the conference.",
             {
@@ -31,14 +33,15 @@ function addPeople(){
                     });
                 }
             });
-        ask("Would you like to add another person?",{
+
+        /*ask("Would you like to add another person?",{
             choices: "yes,no",
             onChoice: function(event){
                 if(event.value === "no"){
                     shouldAdd = false;
                 }
             }
-        })
+        })*/
     }
 
 }
