@@ -7,11 +7,13 @@
 // load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
+var numbersToDial = csvJSON(loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv"));
+
 // for now, just pretend we've already loaded the CSV into an object.
-var numbersToDial = {"people":[
+/*var numbersToDial = {"people":[
                     {"name":"Chris","number":myConfig.numbers[0]},
                     {"name":"Eva","number":myConfig.numbers[1]}
-                    ]};
+                    ]};*/
 
 for (var i = 0; i<numbersToDial.people.length; i++){
 var callee = numbersToDial.people[i];
@@ -37,6 +39,49 @@ function load_json(url){
     while (dis.available() != 0) {
         line = dis.readLine();
         returnJSON += line;
+    }
+    return returnJSON;
+}
+
+//file loading function.
+function load_file(url){
+    var line;
+    var returnFile = "";
+    connection = new java.net.URL(url).openConnection();
+    connection.setDoOutput(false);
+    connection.setDoInput(true);
+    connection.setInstanceFollowRedirects(false);
+    connection.setRequestMethod("GET");
+    connection.setRequestProperty("Content-Type", "text/plain");
+    connection.setRequestProperty("charset", "utf-8");
+    connection.connect();
+
+    dis = new java.io.DataInputStream(connection.getInputStream());
+    while (dis.available() != 0) {
+        line = dis.readLine();
+        returnFile += line;
+    }
+    return returnFile;
+}
+
+function csvJSON(csv){
+
+    var lines=csv.split("\n");
+
+    var returnJSON = [];
+
+    var headers=lines[0].split(",");
+
+    for(var i=1;i<lines.length;i++){
+
+        var obj = {};
+        var currentline=lines[i].split(",");
+
+        for(var j=0;j<headers.length;j++){
+            obj[headers[j]] = currentline[j];
+        }
+
+        returnJSON.push(obj);
     }
     return returnJSON;
 }
