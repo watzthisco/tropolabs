@@ -83,5 +83,5 @@ function csvJSON(csv){
 
         returnJSON.push(obj);
     }
-    return returnJSON;
+    return JSON.stringify(returnJSON);
 }
