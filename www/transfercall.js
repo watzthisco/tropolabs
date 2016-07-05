@@ -7,7 +7,7 @@
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
-var result = ask("To be transferred to the Chemistry Joke hotline, press 1. To be transferred to WatzThis, press 2.", {
+var result = ask("To hear a chemistry joke, press 1. To be transferred to WatzThis, press 2.", {
     choices:"1,2",
     mode: "dtml",
     onChoice: function(result) {
