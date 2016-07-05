@@ -10,9 +10,8 @@ var chemistJokes = [
 "Two chemists go into a restaurant. The first one says 'I think I'll have an H2O.' The second one says 'I think I'll have an H2O too' -- and he died."
 ];
 
-var result = ask("Would you like to hear a chemistry joke?", {
-    choices: "yes, no"});
-say("thinking...");
+say("Thank you for calling the Chemistry Joke Hotline.");
+say("Please hold on while I pick a joke for you.");
 wait(1000);
 say("Ok, here it is:");
 var joke = chemistJokes[Math.floor(Math.random()*chemistJokes.length)];
