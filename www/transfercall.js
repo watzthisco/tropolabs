@@ -11,22 +11,32 @@ var result = ask("To be transferred to the Chemistry Joke hotline, press 1. To b
     choices:"1,2",
     mode: "dtml",
     onChoice: function(result) {
-        
-            say("Transferring.");
-            
-            if(parseInt(result.value) === 1) { 
+
+        say("Transferring.");
+        var userInput = parseInt(result.value);
+
+        switch(userInput) {
+            case 1:
                 transfer("+13134516844", {
                     onTimeout: function(event) {
                         say("Sorry, there was no answer.");
                     }
                 });
-            } else {
+                break;
+
+            case 2:
                 transfer(myConfig.numbers[1], {
                     onTimeout: function(event) {
                         say("Sorry, there was no answer.");
                     }
                 });
-            }
+                break;
+
+            default:
+                say("I don't know how you got to this message.");
+                break;
+        }
+
     },
     onBadChoice: function(event) {
         say("That is not a valid option");
