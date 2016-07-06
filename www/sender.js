@@ -6,8 +6,10 @@
 
 // load an external json file with settings.
 //var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
+var csvFile = loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv");
+log(csvFile);
 
-var numbersToDial = csvJSON(loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv"));
+var numbersToDial = csvJSON(csvFile);
 
 // for now, just pretend we've already loaded the CSV into an object.
 /*var numbersToDial = [
