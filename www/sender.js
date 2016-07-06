@@ -20,9 +20,12 @@ log("json file: " + numbersToDial);
 for (var i = 0; i<2; i++){
 var callee = numbersToDial[i];
     log("callee " + i + ": " + callee.name + " number: " + callee.number + " - end-line");
-//call(callee.number);
-//say("Hi, " + callee.name);
-//hangup();
+
+    call(callee.number);
+    wait(1000);
+    say("Hi, " + callee.name);
+    wait(1000);
+    hangup();
 }
 
 //file loading function.
