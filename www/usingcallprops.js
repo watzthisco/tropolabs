@@ -25,7 +25,7 @@ call(myConfig.numbers[0], {
                 say("I see that your name is " + say_as(currentCall.calledName,'speech'));
             }
         }
-        say("Your caller ID is " + say_as(currentCall.calledID,'speech'));
+        say("Your caller ID is " + say_as(''+ String(currentCall.calledID),'speech'));
     },
 
     onTimeout: function() {
