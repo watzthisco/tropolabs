@@ -17,6 +17,8 @@ var numbersToDial = csvJSON(csvFile);
                     {"name":"Eva","number":myConfig.numbers[1]}
                     ];*/
 log("json file: " + numbersToDial);
+log("number of records: " + numbersToDial.length);
+
 for (var i = 0; i<2; i++){
 var callee = numbersToDial[i];
     log("callee " + i + ": " + callee.name + " number: " + callee.number + " - end-line");
