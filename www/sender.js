@@ -7,7 +7,7 @@
 // load an external json file with settings.
 //var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 var csvFile = loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv");
-log(csvFile);
+log("csv file: " + csvFile);
 
 var numbersToDial = csvJSON(csvFile);
 
@@ -16,11 +16,12 @@ var numbersToDial = csvJSON(csvFile);
                     {"name":"Chris","number":myConfig.numbers[0]},
                     {"name":"Eva","number":myConfig.numbers[1]}
                     ];*/
-log(numbersToDial);
+log("json file: " + numbersToDial);
 for (var i = 0; i<2; i++){
 var callee = numbersToDial[i];
-call(callee.number);
-say("Hi, " + callee.name);
+    log("callee " + i + ": " + callee);
+//call(callee.number);
+//say("Hi, " + callee.name);
 hangup();
 }
 
