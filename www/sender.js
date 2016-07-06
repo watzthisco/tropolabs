@@ -5,7 +5,7 @@
 
 
 // load an external json file with settings.
-var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
+//var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
 var numbersToDial = csvJSON(loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv"));
 
@@ -44,7 +44,7 @@ function load_json(url){
 }
 
 //file loading function.
-function load_file(url){
+function loadFile(url){
     var line;
     var returnFile = "";
     connection = new java.net.URL(url).openConnection();
