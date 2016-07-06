@@ -62,14 +62,14 @@ function loadFile(url){
     dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
-        returnFile += line;
+        returnFile += line + "#end";
     }
     return returnFile;
 }
 
 function csvJSON(csv){
 
-    var lines=csv.split("\n");
+    var lines=csv.split("#end");
 
     var returnJSON = [];
 
