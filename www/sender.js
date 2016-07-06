@@ -10,13 +10,13 @@
 var numbersToDial = csvJSON(loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv"));
 
 // for now, just pretend we've already loaded the CSV into an object.
-/*var numbersToDial = {"people":[
+/*var numbersToDial = [
                     {"name":"Chris","number":myConfig.numbers[0]},
                     {"name":"Eva","number":myConfig.numbers[1]}
-                    ]};*/
+                    ];*/
 log(numbersToDial);
-for (var i = 0; i<numbersToDial.people.length; i++){
-var callee = numbersToDial.people[i];
+for (var i = 0; i<numbersToDial.length; i++){
+var callee = numbersToDial[i];
 call(callee.number);
 say("Hi, " + callee.name);
 hangup();
