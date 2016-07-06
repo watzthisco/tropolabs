@@ -16,16 +16,16 @@ call(myConfig.numbers[0], {
             if(currentCall.network === 'SIP'){
                 say("I see that your name is " + currentCall.callerName);
             }
-            say("Your caller ID is " + currentCall.callerID);
+            say("Your caller ID is " + say_as(currentCall.callerID,'speech'));
 
 
         } else {
             say("I'm calling today to tell you some information about my call to you today.");
             if(currentCall.network === 'SIP'){
-                say("I see that your name is " + currentCall.calledName);
+                say("I see that your name is " + say_as(currentCall.calledName,'speech'));
             }
         }
-        say("Your caller ID is " + currentCall.calledID);
+        say("Your caller ID is " + say_as(currentCall.calledID,'speech'));
     },
 
     onTimeout: function() {
@@ -55,4 +55,13 @@ function load_json(url){
         returnJSON += line;
     }
     return returnJSON;
+}
+
+function say_as(value,type){
+    ssml_start="<?xml version='1.0'?><speak>";
+    ssml_end="</say-as></speak>";
+    ssml ="<say-as interpret-as='vxml:"+ type + "'>" + value+"";
+    complete_string = ssml_start + ssml + ssml_end;
+    log('@@ Say as: ' + complete_string);
+    say(complete_string);
 }
