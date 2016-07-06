@@ -59,7 +59,7 @@ function loadFile(url){
     dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
-        returnFile += line;
+        returnFile += line + "\n";
     }
     return returnFile;
 }
