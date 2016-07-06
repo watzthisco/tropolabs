@@ -14,18 +14,23 @@ call(myConfig.numbers[0], {
         if(currentCall.isIncoming === true){
             say("Thank you for calling the incoming call information line.");
             if(currentCall.network === 'SIP'){
-                say("I see that your name is " + currentCall.callerName);
+                var callerName = say_as(currentCall.callerName,'phone');
+                say("I see that your name is " + callerName);
             }
-            say("Your caller ID is " + say_as(currentCall.callerID,'speech'));
+            var callerID = say_as(currentCall.callerID,'phone');
+            say("Your caller ID is " + callerID);
 
 
         } else {
             say("I'm calling today to tell you some information about my call to you today.");
             if(currentCall.network === 'SIP'){
-                say("I see that your name is " + say_as(currentCall.calledName,'speech'));
+                var calledName = say_as(currentCall.calledName,'phone');
+                say("I see that your name is " + calledName);
             }
+            var calledID = say_as(currentCall.calledID,'phone');
+            say("Your caller ID is " + calledID);
         }
-        say("Your caller ID is " + say_as(''+ String(currentCall.calledID),'speech'));
+
     },
 
     onTimeout: function() {
