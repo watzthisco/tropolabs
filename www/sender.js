@@ -11,11 +11,7 @@ log("csv file: " + csvFile);
 
 var numbersToDial = csvJSON(csvFile);
 
-// for now, just pretend we've already loaded the CSV into an object.
-/*var numbersToDial = [
-                    {"name":"Chris","number":myConfig.numbers[0]},
-                    {"name":"Eva","number":myConfig.numbers[1]}
-                    ];*/
+
 log("json file: " + numbersToDial);
 log("number of records: " + numbersToDial.length);
 
