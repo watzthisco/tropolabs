@@ -14,7 +14,7 @@ var numbersToDial = csvJSON(loadFile("http://hosting.tropo.com/5055259/www/data/
                     {"name":"Chris","number":myConfig.numbers[0]},
                     {"name":"Eva","number":myConfig.numbers[1]}
                     ]};*/
-
+log(numbersToDial);
 for (var i = 0; i<numbersToDial.people.length; i++){
 var callee = numbersToDial.people[i];
 call(callee.number);
