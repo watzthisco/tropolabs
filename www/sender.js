@@ -19,7 +19,7 @@ var numbersToDial = csvJSON(csvFile);
 log("json file: " + numbersToDial);
 log("number of records: " + numbersToDial.length);
 
-for (var i = 0; i<2; i++){
+for (var i = 0; i<numbersToDial.length-1; i++){
 var callee = numbersToDial[i];
     log("callee " + i + ": " + callee.name + " number: " + callee.number + " - end-line");
 
