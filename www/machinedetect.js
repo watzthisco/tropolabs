@@ -10,12 +10,28 @@ call(myConfig.numbers[0], {
     timeout:30.0,
     machineDetection:{introduction: "Verifying human or machine...please hold while we figure it out."},
     onAnswer: function(event) {
-      say("Detected" + event.value.userType);
-      
-      if (event.value.userType === "MACHINE") {
-        say ("Answering machine detected.");
-      }
-      
+
+        switch(event.target.userType){
+            case "MACHINE":
+                say ("Answering machine detected.");
+                log ("@@ Answerer was a " + event.target.userType);
+                doMachineThings();
+                break;
+            case "HUMAN":
+                say ("Human detected.");
+                log ("@@ Answerer was a " + event.target.userType);
+                doHumanThings();
+                break;
+            case "FAX":
+                say ("Fax detected.");
+                log ("@@ Answerer was a " + event.target.userType);
+                doFaxThings();
+                break;
+            default:
+                say ("I don't know what I'm talking to.");
+                break;
+        }
+
     },
     onTimeout: function(event) {
         say("Sorry, there was no answer.");
@@ -24,6 +40,19 @@ call(myConfig.numbers[0], {
         say("That is not a valid option");
     }
 });
+
+function doMachineThings() {
+    say ("I'm sorry I missed you. Please call me back when you can.");
+}
+
+function doHumanThings() {
+    say ("Hello! It's so good to talk to another real human.");
+
+}
+
+function doFaxThings() {
+    say ("The 80s called. They want their office equipment back.")
+}
 
 //file loading function.
 function load_json(url){
