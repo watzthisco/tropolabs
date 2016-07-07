@@ -65,10 +65,7 @@ function load_json(url){
 }
 
 function say_as(value,type){
-    if (value.charAt(0) === "+"){
-        value = value.slice(1);
-        log("Stripping leading +");
-    }
+    string = string.indexOf(0) == '+' ? string.substring(1) : string;
     ssml_start="<?xml version='1.0'?><speak>";
     ssml_end="</say-as></speak>";
     ssml ="<say-as interpret-as='vxml:"+ type + "'>" + value + "";
