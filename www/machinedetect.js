@@ -10,24 +10,26 @@ call(myConfig.numbers[0], {
     timeout:120.0,
     machineDetection:{introduction: "Verifying human or a machine...please hold while we determine...almost finished. Thank you!"},
     onAnswer: function(event) {
+        say("Hello, " + event.value.userType);
+
         log("@@ Detected " + event.value.userType);
-        
-        var strUserType = String(event.value.usertype);
+
+        var strUserType = String(event.value.userType);
         switch(strUserType){
 
             case "MACHINE":
                 say ("Answering machine detected.");
-                log ("@@ Answerer was a " + event.value.userType);
+                log ("@@ Answerer was a " + strUserType);
                 doMachineThings();
                 break;
             case "HUMAN":
                 say ("Human detected.");
-                log ("@@ Answerer was a " + event.value.userType);
+                log ("@@ Answerer was a " + strUserType);
                 doHumanThings();
                 break;
             case "FAX":
                 say ("Fax detected.");
-                log ("@@ Answerer was a " + event.value.userType);
+                log ("@@ Answerer was a " + strUserType);
                 doFaxThings();
                 break;
             default:
