@@ -68,5 +68,5 @@ function say_as(value,type){
     ssml ="<say-as interpret-as='vxml:"+ type + "'>" + value+"";
     complete_string = ssml_start + ssml + ssml_end;
     log('@@ Say as: ' + complete_string);
-    say(complete_string);
+    return complete_string;
 }
