@@ -65,8 +65,12 @@ function load_json(url){
 }
 
 function say_as(value,type){
-    value = value.substring(2);
-    //value = value.charAt(0) == '+' ? value.substring(1) : value;
+    log("@@ The first character is: " + value.charAt(0));
+
+    if (value.charAt(0) === '+'){
+        value = value.substring(2);
+    }
+
     log("@@ The value is: " + value);
     ssml_start="<?xml version='1.0'?><speak>";
     ssml_end="</say-as></speak>";
