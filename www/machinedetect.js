@@ -10,10 +10,10 @@ call(myConfig.numbers[0], {
     timeout:120.0,
     machineDetection:{introduction: "Verifying human or a machine...please hold while we determine...almost finished. Thank you!"},
     onAnswer: function(event) {
-        say("Detected " + event.value.userType);
         log("@@ Detected " + event.value.userType);
-        log("@@ Are they equal? " + ("HUMAN" === String(event.value.userType)));
-        switch(event.value.userType){
+        
+        var strUserType = String(event.value.usertype);
+        switch(strUserType){
 
             case "MACHINE":
                 say ("Answering machine detected.");
