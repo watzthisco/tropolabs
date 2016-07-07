@@ -30,6 +30,7 @@ call(myConfig.numbers[0], {
             var calledID = say_as(currentCall.calledID,'phone');
             if (calledID.charAt(0) === "+"){
                 calledID = calledID.slice(1);
+                log("Stripping leading +");
             }
             say("Your caller ID is ");
             say(calledID);
