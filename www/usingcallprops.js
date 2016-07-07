@@ -67,8 +67,8 @@ function load_json(url){
 function say_as(value,type){
     log("@@ The first character is: " + value.charAt(0));
 
-    if (value.charAt(0) === '+'){
-        value = value.substring(2);
+    if (value.charAt(0) === 43){ // look for leading + and remove it
+        value = value.substring(1);
     }
 
     log("@@ The value is: " + value);
