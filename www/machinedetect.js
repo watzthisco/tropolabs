@@ -4,7 +4,7 @@
  */
 
 //load an external json file with settings.
-var myConfig = load_json("http://hosting.tropo.com/5055259/www/config/config.json");
+var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
 call(myConfig.numbers[0], {
     timeout:30.0,
@@ -27,7 +27,8 @@ call(myConfig.numbers[0], {
 
 //file loading function.
 function load_json(url){
-
+    var line;
+    var returnJSON = "";
     connection = new java.net.URL(url).openConnection();
     connection.setDoOutput(false);
     connection.setDoInput(true);
@@ -40,6 +41,7 @@ function load_json(url){
     dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
-        this.eval(""+line);
+        returnJSON += line;
     }
+    return returnJSON;
 }
