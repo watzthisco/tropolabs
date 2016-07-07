@@ -27,7 +27,10 @@ call(myConfig.numbers[0], {
                 var calledName = say_as(currentCall.calledName,'phone');
                 say("I see that your name is " + calledName);
             }
-            var calledID = say_as(currentCall.calledID,'digits');
+            var calledID = say_as(currentCall.calledID,'phone');
+            if (calledID === "+"){
+                calledID = calledID.slice(1);
+            }
             say("Your caller ID is ");
             say(calledID);
         }
