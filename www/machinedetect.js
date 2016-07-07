@@ -7,28 +7,27 @@
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
 call(myConfig.numbers[0], {
-    timeout:30.0,
+    timeout:120.0,
     machineDetection:{introduction: "Verifying human or a machine...please hold while we determine...almost finished. Thank you!"},
     onAnswer: function(event) {
         say("Detected " + event.value.userType);
-
-        log("@@ Detected User Type: " + event.target.userType);
-
-        switch(event.target.userType){
+        log("@@ Detected " + event.value.userType);
+        
+        switch(event.value.userType){
 
             case "MACHINE":
                 say ("Answering machine detected.");
-                log ("@@ Answerer was a " + event.target.userType);
+                log ("@@ Answerer was a " + event.value.userType);
                 doMachineThings();
                 break;
             case "HUMAN":
                 say ("Human detected.");
-                log ("@@ Answerer was a " + event.target.userType);
+                log ("@@ Answerer was a " + event.value.userType);
                 doHumanThings();
                 break;
             case "FAX":
                 say ("Fax detected.");
-                log ("@@ Answerer was a " + event.target.userType);
+                log ("@@ Answerer was a " + event.value.userType);
                 doFaxThings();
                 break;
             default:
