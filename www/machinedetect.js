@@ -6,7 +6,7 @@
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
-call(myConfig.numbers[0], {
+call(myConfig.numbers[1], {
     timeout:120.0,
     machineDetection:{introduction: "I want to know if you are a human...please tell me your name..."},
     onAnswer: function(event) {
