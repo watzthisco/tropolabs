@@ -17,8 +17,10 @@ call(myConfig.numbers[0], {
                 var callerName = say_as(currentCall.callerName,'phone');
                 say("I see that your name is " + callerName);
             }
+
             var callerID = say_as(currentCall.callerID,'phone');
-            say("Your caller ID is " + callerID);
+            say("Your caller ID is ");
+            say(callerID);
 
 
         } else {
@@ -27,8 +29,8 @@ call(myConfig.numbers[0], {
                 var calledName = say_as(currentCall.calledName,'phone');
                 say("I see that your name is " + calledName);
             }
-            var calledID = say_as(currentCall.calledID,'phone');
 
+            var calledID = say_as(currentCall.calledID,'phone');
             say("Your caller ID is ");
             say(calledID);
         }
