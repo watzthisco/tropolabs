@@ -65,7 +65,7 @@ function load_json(url){
 }
 
 function say_as(value,type){
-    string = string.indexOf(0) == '+' ? string.substring(1) : string;
+    value = value.indexOf(0) == '+' ? value.substring(1) : value;
     ssml_start="<?xml version='1.0'?><speak>";
     ssml_end="</say-as></speak>";
     ssml ="<say-as interpret-as='vxml:"+ type + "'>" + value + "";
