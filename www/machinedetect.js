@@ -12,7 +12,7 @@ call(myConfig.numbers[0], {
     onAnswer: function(event) {
         say("Detected " + event.value.userType);
         log("@@ Detected " + event.value.userType);
-        
+        log("@@ Are they equal? " + ("HUMAN" === event.value.userType));
         switch(event.value.userType){
 
             case "MACHINE":
