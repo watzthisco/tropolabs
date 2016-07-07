@@ -65,7 +65,8 @@ function load_json(url){
 }
 
 function say_as(value,type){
-    value = value.charAt(0) == '+' ? value.substring(1) : value;
+    value = value.substring(2);
+    //value = value.charAt(0) == '+' ? value.substring(1) : value;
     log("@@ The value is: " + value);
     ssml_start="<?xml version='1.0'?><speak>";
     ssml_end="</say-as></speak>";
