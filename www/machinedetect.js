@@ -8,7 +8,7 @@ var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config
 
 call(myConfig.numbers[0], {
     timeout:120.0,
-    machineDetection:{introduction: "Verifying human or a machine..."},
+    machineDetection:{introduction: "I want to know if you are a human...please tell me your name..."},
     onAnswer: function(event) {
         say("Hello, " + event.value.userType);
 
