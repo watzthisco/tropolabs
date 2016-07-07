@@ -28,10 +28,7 @@ call(myConfig.numbers[0], {
                 say("I see that your name is " + calledName);
             }
             var calledID = say_as(currentCall.calledID,'phone');
-            if (calledID.charAt(0) === "+"){
-                calledID = calledID.slice(1);
-                log("Stripping leading +");
-            }
+
             say("Your caller ID is ");
             say(calledID);
         }
@@ -68,9 +65,13 @@ function load_json(url){
 }
 
 function say_as(value,type){
+    if (value.charAt(0) === "+"){
+        value = value.slice(1);
+        log("Stripping leading +");
+    }
     ssml_start="<?xml version='1.0'?><speak>";
     ssml_end="</say-as></speak>";
-    ssml ="<say-as interpret-as='vxml:"+ type + "'>" + value+"";
+    ssml ="<say-as interpret-as='vxml:"+ type + "'>" + value + "";
     complete_string = ssml_start + ssml + ssml_end;
     log('@@ Say as: ' + complete_string);
     return complete_string;
