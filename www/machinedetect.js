@@ -11,9 +11,9 @@ call(myConfig.numbers[0], {
     machineDetection:{introduction: "Please hold for an important message."},
     onAnswer: function(event) {
 
-        switch(event.target.userType){
+        log("@@ Detected User Type: " + event.target.userType);
 
-            log("@@ Detected User Type: " + event.target.userType);
+        switch(event.target.userType){
 
             case "MACHINE":
                 say ("Answering machine detected.");
