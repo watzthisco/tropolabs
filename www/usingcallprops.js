@@ -28,7 +28,7 @@ call(myConfig.numbers[0], {
                 say("I see that your name is " + calledName);
             }
             var calledID = say_as(currentCall.calledID,'phone');
-            if (calledID === "+"){
+            if (calledID.charAt(0) === "+"){
                 calledID = calledID.slice(1);
             }
             say("Your caller ID is ");
