@@ -10,6 +10,7 @@ call(myConfig.numbers[0], {
     timeout:30.0,
     machineDetection:{introduction: "Verifying human or a machine...please hold while we determine...almost finished. Thank you!"},
     onAnswer: function(event) {
+        say("Detected " + event.value.userType);
 
         log("@@ Detected User Type: " + event.target.userType);
 
