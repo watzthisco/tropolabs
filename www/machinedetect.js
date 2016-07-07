@@ -12,6 +12,9 @@ call(myConfig.numbers[0], {
     onAnswer: function(event) {
 
         switch(event.target.userType){
+
+            log("@@ Detected User Type: " + event.target.userType);
+
             case "MACHINE":
                 say ("Answering machine detected.");
                 log ("@@ Answerer was a " + event.target.userType);
