@@ -4,7 +4,7 @@
  */
 
 //load an external json file with settings.
-var myConfig = load_json("http://hosting.tropo.com/5055259/www/config/config.json");
+var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
 var result = ask("For sales, press 1. To talk to the manager, press 2.", {
     choices:"1,2",
@@ -26,7 +26,7 @@ var result = ask("For sales, press 1. To talk to the manager, press 2.", {
                             onBadChoice: function(event) {
                                 say("Rejecting the call.");
                                 
-                            },
+                            }
                         }
                     );
                 },
@@ -39,7 +39,8 @@ var result = ask("For sales, press 1. To talk to the manager, press 2.", {
             transfer(myConfig.numbers[0], {
                 playvalue: "http://www.phono.com/audio/holdmusic.mp3",
                 onConnect: function(event) {
-                    ask("Someone wants to talk to the manager. Press 1 to accept the call, press any other key to reject.", {
+                    ask("Someone wants to talk to the manager. Press 1 to accept the call, press any other key to reject.",
+                        {
                             voice: "Ava",
                             choices:"1",
                             mode: "dtmf",
@@ -49,7 +50,7 @@ var result = ask("For sales, press 1. To talk to the manager, press 2.", {
                             onBadChoice: function(event) {
                                 say("Rejecting the call. Goodbye.");
                                 hangup();
-                            },
+                            }
                         }
                     );
                 },
@@ -67,7 +68,8 @@ var result = ask("For sales, press 1. To talk to the manager, press 2.", {
 
 //file loading function.
 function load_json(url){
-
+    var line;
+    var returnJSON = "";
     connection = new java.net.URL(url).openConnection();
     connection.setDoOutput(false);
     connection.setDoInput(true);
@@ -80,6 +82,7 @@ function load_json(url){
     dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
-        this.eval(""+line);
+        returnJSON += line;
     }
+    return returnJSON;
 }
