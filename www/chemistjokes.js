@@ -1,3 +1,10 @@
+/*
+ * Tropo Learning Lab - Auto Attendant with Data
+ * Level: Intermediate
+ * TODO: make it get data from a CouchDB database to populate menu and get responses.
+ * To Test: call 313-451-6844
+ */
+
 var chemistJokes = [
     "Don't trust atoms, they make up everything.",
     "Have you heard the one about a chemist who was reading a book about helium? He just couldn't put it down.",

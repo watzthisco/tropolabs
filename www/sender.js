@@ -1,6 +1,7 @@
 /*
  * Tropo Learning Lab - Basic CSV Dialer
  * Level: Beginner
+ * To Test: Launch from dashboard
  */
 
 var csvFile = loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv");

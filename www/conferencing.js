@@ -1,11 +1,8 @@
 /*
  * Tropo Learning Lab - Conferencing
  * Level: Intermediate
+ * todo: figure out how to have the app call someone and place them into conference
  */
-
-//todo: figure out how to have the app call someone and place them into conference
-call("+19167305777");
-call("+19164699971");
 
 say("Welcome to the conference call system.");
 

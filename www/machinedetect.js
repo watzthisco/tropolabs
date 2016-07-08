@@ -1,6 +1,7 @@
 /*
  * Tropo Learning Lab - Answering Machine Detection
  * Level: Intermediate
+ * To Test: launch from dashboard
  */
 
 //load an external json file with settings.

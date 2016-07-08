@@ -1,6 +1,7 @@
 /*
  * Tropo Learning Lab - Mixing Voice and SMS
  * Level: Intermediate
+ * To Test: call 586-232-5967
  *
  * Docs:
  * This app sends a random SMS message with a message from

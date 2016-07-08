@@ -1,1 +1,1 @@
-/* * Tropo Learning Lab - Send and Receive SMS * Level: Beginner */function reverse(s) {    return s.split("").reverse().join("");}var reversedMessage = reverse(currentCall.initialText);say(reversedMessage);
+/* * Tropo Learning Lab - Send and Receive SMS * Level: Beginner * To Test: Send SMS to 317-268-5084 */function reverse(s) {    return s.split("").reverse().join("");}var reversedMessage = reverse(currentCall.initialText);say(reversedMessage);
