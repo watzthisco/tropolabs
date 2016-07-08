@@ -1,0 +1,23 @@
+{
+  "name": "tropolearninglabs",
+  "version": "1.0.0",
+  "description": "Example apps for Tropo Learning Labs, created by WatzThis, 2016",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint www/*.js; exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/watzthisco/tropolabs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/watzthisco/tropolabs/issues"
+  },
+  "homepage": "https://github.com/watzthisco/tropolabs#readme",
+  "devDependencies": {
+    "eslint": "^3.0.1"
+  }
+}
