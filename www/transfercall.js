@@ -8,43 +8,43 @@
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
 var result = ask("To hear a chemistry joke, press 1. To be transferred to WatzThis, press 2.", {
-    choices:"1,2",
+    choices: "1,2",
     mode: "dtml",
-    onChoice: function(result) {
+    onChoice: function (result) {
 
         say("Transferring.");
         var userInput = parseInt(result.value);
 
-        switch(userInput) {
-            case 1:
-                transfer("+13134516844", {
-                    onTimeout: function(event) {
-                        say("Sorry, there was no answer.");
-                    }
-                });
-                break;
+        switch (userInput) {
+        case 1:
+            transfer("+13134516844", {
+                onTimeout: function () {
+                    say("Sorry, there was no answer.");
+                }
+            });
+            break;
 
-            case 2:
-                transfer(myConfig.numbers[1], {
-                    onTimeout: function(event) {
-                        say("Sorry, there was no answer.");
-                    }
-                });
-                break;
+        case 2:
+            transfer(myConfig.numbers[1], {
+                onTimeout: function () {
+                    say("Sorry, there was no answer.");
+                }
+            });
+            break;
 
-            default:
-                say("I don't know how you got to this message.");
-                break;
+        default:
+            say("I don't know how you got to this message.");
+            break;
         }
 
     },
-    onBadChoice: function(event) {
+    onBadChoice: function () {
         say("That is not a valid option");
     }
 });
 
 //file loading function.
-function load_json(url){
+function load_json(url) {
     var line;
     var returnJSON = "";
     connection = new java.net.URL(url).openConnection();
@@ -56,7 +56,7 @@ function load_json(url){
     connection.setRequestProperty("charset", "utf-8");
     connection.connect();
 
-    dis = new java.io.DataInputStream(connection.getInputStream());
+    var dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
         returnJSON += line;

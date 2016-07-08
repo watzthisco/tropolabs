@@ -14,7 +14,7 @@ say("Welcome to the conference call system.");
 conference("5555", {
     terminator: "*",
     playTones: true,
-    onChoice: function(event){
+    onChoice: function(){
         say("Disconnecting");
     }
 });

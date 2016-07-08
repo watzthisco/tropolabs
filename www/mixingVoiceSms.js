@@ -47,7 +47,7 @@ function load_json(url){
     connection.setRequestProperty("charset", "utf-8");
     connection.connect();
 
-    dis = new java.io.DataInputStream(connection.getInputStream());
+    var dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
         returnJSON += line;

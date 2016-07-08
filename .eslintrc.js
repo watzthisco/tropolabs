@@ -14,7 +14,10 @@ module.exports = {
         "connection": true,
         "currentCall": true,
         "log": true,
-        "java": true
+        "java": true,
+        "hangup": true,
+        "record": true,
+        "message": true
 
 
     },
@@ -24,10 +27,7 @@ module.exports = {
             "error",
             4
         ],
-        "linebreak-style": [
-            "warn",
-            "unix"
-        ],
+        "linebreak-style": 0,
         "quotes": [
             "error",
             "double"

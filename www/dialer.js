@@ -9,18 +9,18 @@ var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config
 var numbersToDial = [{
     name: "Mr. Jones",
     number: myConfig.numbers[0]
-    },{
+}, {
     name: "Mrs. Smith",
     number: myConfig.numbers[1]
-    }];
+}];
 
-for (var i=0; i<numbersToDial.length; i++){
-    call(numbersToDial[i].number,{
+for (var i = 0; i < numbersToDial.length; i++) {
+    call(numbersToDial[i].number, {
         onAnswer: playMessage(numbersToDial[i].name)
     });
 }
 
-function playMessage(name){
+function playMessage(name) {
     say("Hello, " + name + ". This is an important reminder.");
     wait(1000);
     say("Goodbye");
@@ -28,7 +28,7 @@ function playMessage(name){
 }
 
 //file loading function.
-function load_json(url){
+function load_json(url) {
     var line;
     var returnJSON = "";
     connection = new java.net.URL(url).openConnection();
@@ -40,7 +40,7 @@ function load_json(url){
     connection.setRequestProperty("charset", "utf-8");
     connection.connect();
 
-    dis = new java.io.DataInputStream(connection.getInputStream());
+    var dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
         returnJSON += line;

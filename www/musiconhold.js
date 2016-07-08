@@ -14,26 +14,26 @@ var holdMusic = {
 
 say("Please select the type of music you'd like to hear while you wait for someone to answer.");
 wait(500);
-ask("Choose improvisation, ambient, or blues.", 
-{
-    choices:"improvisation, ambient, blues",
-    attempts: 3,
-    onBadChoice: function(){
-        say("I'm sorry, I didn't get that.");
-    },
-    onChoice: function(event){
+ask("Choose improvisation, ambient, or blues.",
+    {
+        choices: "improvisation, ambient, blues",
+        attempts: 3,
+        onBadChoice: function () {
+            say("I'm sorry, I didn't get that.");
+        },
+        onChoice: function (event) {
             transfer(myConfig.numbers[1], {
                 playvalue: holdMusic[event.value],
-                onTimeout: function(event) {
+                onTimeout: function (event) {
                     say("Sorry, but nobody answered");
                 }
             });
-    }
-    
-});
+        }
+
+    });
 
 //file loading function.
-function load_json(url){
+function load_json(url) {
     var line;
     var returnJSON = "";
     connection = new java.net.URL(url).openConnection();
@@ -45,7 +45,7 @@ function load_json(url){
     connection.setRequestProperty("charset", "utf-8");
     connection.connect();
 
-    dis = new java.io.DataInputStream(connection.getInputStream());
+    var dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
         returnJSON += line;

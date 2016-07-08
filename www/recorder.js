@@ -14,15 +14,15 @@ say("Welcome to the message recorder!");
 var messageFileName = Date.now() + ".mp3";
 
 var myRecording = record("Record your 15-second message after the beep.", {
-	beep: true,
-	recordFormat:"audio/mp3",
-	recordURI: myConfig.ftp.host + "/www/audio/" + messageFileName,
-	recordUser: myConfig.ftp.user,
-	recordPassword: myConfig.ftp.pass,
-	maxTime: 15,
-	onRecord: function(){
+    beep: true,
+    recordFormat: "audio/mp3",
+    recordURI: myConfig.ftp.host + "/www/audio/" + messageFileName,
+    recordUser: myConfig.ftp.user,
+    recordPassword: myConfig.ftp.pass,
+    maxTime: 15,
+    onRecord: function () {
 
-	}
+    }
 });
 
 say("Here's your damn message.");
@@ -30,22 +30,22 @@ say("Here's your damn message.");
 say(myRecording.value);
 
 //file loading function.
-function load_json(url){
-	var line;
-	var returnJSON = "";
-	connection = new java.net.URL(url).openConnection();
-	connection.setDoOutput(false);
-	connection.setDoInput(true);
-	connection.setInstanceFollowRedirects(false);
-	connection.setRequestMethod("GET");
-	connection.setRequestProperty("Content-Type", "text/plain");
-	connection.setRequestProperty("charset", "utf-8");
-	connection.connect();
+function load_json(url) {
+    var line;
+    var returnJSON = "";
+    connection = new java.net.URL(url).openConnection();
+    connection.setDoOutput(false);
+    connection.setDoInput(true);
+    connection.setInstanceFollowRedirects(false);
+    connection.setRequestMethod("GET");
+    connection.setRequestProperty("Content-Type", "text/plain");
+    connection.setRequestProperty("charset", "utf-8");
+    connection.connect();
 
-	dis = new java.io.DataInputStream(connection.getInputStream());
-	while (dis.available() != 0) {
-		line = dis.readLine();
-		returnJSON += line;
-	}
-	return returnJSON;
+    var dis = new java.io.DataInputStream(connection.getInputStream());
+    while (dis.available() != 0) {
+        line = dis.readLine();
+        returnJSON += line;
+    }
+    return returnJSON;
 }

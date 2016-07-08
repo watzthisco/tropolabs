@@ -16,7 +16,7 @@ log("json file: " + numbersToDial);
 log("number of records: " + numbersToDial.length);
 
 for (var i = 0; i<numbersToDial.length-1; i++){
-var callee = numbersToDial[i];
+    var callee = numbersToDial[i];
     log("callee " + i + ": " + callee.name + " number: " + callee.number + " - end-line");
 
     call(callee.number);
@@ -39,7 +39,7 @@ function load_json(url){
     connection.setRequestProperty("charset", "utf-8");
     connection.connect();
 
-    dis = new java.io.DataInputStream(connection.getInputStream());
+    var dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
         returnJSON += line;
@@ -60,7 +60,7 @@ function loadFile(url){
     connection.setRequestProperty("charset", "utf-8");
     connection.connect();
 
-    dis = new java.io.DataInputStream(connection.getInputStream());
+    var dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
         returnFile += line + "#end";
