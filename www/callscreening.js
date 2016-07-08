@@ -8,7 +8,7 @@ var myConfig = load_json("http://hosting.tropo.com/5055259/www/config/config.jso
 
 var result = ask("For sales, press 1. To talk to the manager, press 2.", {
     choices:"1,2",
-    mode: "dtml",
+    mode: "dtf",
     onChoice: function(result) {
 
         if(parseInt(result.value) === 1) {
