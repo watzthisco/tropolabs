@@ -34,7 +34,7 @@ say("Hello there my international friend!");
 var result = ask("What language would you like me to speak? " + listSelections(configuration.choices), {
     choices: listKeys(configuration.choices),
     attempts: 3,
-    onBadChoice: function(event) {
+    onBadChoice: function() {
         say("I'm sorry, I didn't understand that.");
     },
     onChoice: function(event) {

@@ -37,7 +37,7 @@ call(myConfig.numbers[1], {
         }
 
     },
-    onTimeout: function (event) {
+    onTimeout: function () {
         say("Sorry, there was no answer.");
     }
 });

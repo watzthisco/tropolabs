@@ -24,7 +24,7 @@ ask("Choose improvisation, ambient, or blues.",
         onChoice: function (event) {
             transfer(myConfig.numbers[1], {
                 playvalue: holdMusic[event.value],
-                onTimeout: function (event) {
+                onTimeout: function () {
                     say("Sorry, but nobody answered");
                 }
             });

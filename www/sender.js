@@ -3,9 +3,6 @@
  * Level: Beginner
  */
 
-
-// load an external json file with settings.
-//var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 var csvFile = loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv");
 log("csv file: " + csvFile);
 
@@ -24,27 +21,6 @@ for (var i = 0; i<numbersToDial.length-1; i++){
     say("Hi, " + callee.name);
     wait(1000);
     hangup();
-}
-
-//file loading function.
-function load_json(url){
-    var line;
-    var returnJSON = "";
-    connection = new java.net.URL(url).openConnection();
-    connection.setDoOutput(false);
-    connection.setDoInput(true);
-    connection.setInstanceFollowRedirects(false);
-    connection.setRequestMethod("GET");
-    connection.setRequestProperty("Content-Type", "text/plain");
-    connection.setRequestProperty("charset", "utf-8");
-    connection.connect();
-
-    var dis = new java.io.DataInputStream(connection.getInputStream());
-    while (dis.available() != 0) {
-        line = dis.readLine();
-        returnJSON += line;
-    }
-    return returnJSON;
 }
 
 //file loading function.

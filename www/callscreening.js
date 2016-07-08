@@ -15,21 +15,21 @@ var result = ask("For sales, press 1. To talk to the manager, press 2.", {
             //transfer to sales
             transfer(myConfig.numbers[1], {
                 playvalue: "http://www.phono.com/audio/holdmusic.mp3",
-                onConnect: function (event) {
+                onConnect: function () {
                     ask("Someone wants to talk to sales. Press 1 to accept the call, press any other key to reject.", {
                         voice: "Ava",
                         choices: "1",
                         mode: "dtmf",
-                        onChoice: function (event) {
+                        onChoice: function () {
                             say("Excellent. Connecting you now.");
                         },
-                        onBadChoice: function (event) {
+                        onBadChoice: function () {
                             say("Rejecting the call.");
 
                         }
                     });
                 },
-                onTimeout: function (event) {
+                onTimeout: function () {
                     say("Sorry, there was no answer.");
                 }
             });
@@ -37,16 +37,16 @@ var result = ask("For sales, press 1. To talk to the manager, press 2.", {
             //transfer to the manager
             transfer(myConfig.numbers[0], {
                 playvalue: "http://www.phono.com/audio/holdmusic.mp3",
-                onConnect: function (event) {
+                onConnect: function () {
                     ask("Someone wants to talk to the manager. Press 1 to accept the call, press any other key to reject.",
                         {
                             voice: "Ava",
                             choices: "1",
                             mode: "dtmf",
-                            onChoice: function (event) {
+                            onChoice: function () {
                                 say("Excellent. Connecting you now.");
                             },
-                            onBadChoice: function (event) {
+                            onBadChoice: function () {
                                 say("Rejecting the call. Goodbye.");
                                 hangup();
                             }
@@ -54,13 +54,13 @@ var result = ask("For sales, press 1. To talk to the manager, press 2.", {
                     );
                 },
 
-                onTimeout: function (event) {
+                onTimeout: function () {
                     say("Sorry, there was no answer.");
                 }
             });
         }
     },
-    onBadChoice: function (event) {
+    onBadChoice: function () {
         say("That is not a valid option");
     }
 });
