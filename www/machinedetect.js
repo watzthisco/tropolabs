@@ -8,9 +8,8 @@ var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config
 
 call(myConfig.numbers[1], {
     timeout:120.0,
-    machineDetection:{introduction: "... I want to know if you are a human...please tell me your name..."},
+    machineDetection:{introduction: "I want to know if you are a human...please tell me your name..."},
     onAnswer: function(event) {
-        //say("Hello, " + event.value.userType);
 
         log("@@ Detected " + event.value.userType);
 
@@ -40,9 +39,6 @@ call(myConfig.numbers[1], {
     },
     onTimeout: function(event) {
         say("Sorry, there was no answer.");
-    },
-    onBadChoice: function(event) {
-        say("That is not a valid option");
     }
 });
 
