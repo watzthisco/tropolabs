@@ -8,9 +8,9 @@
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
 var holdMusic = {
-    improvisation: "http://luridcactus.com/Music/Whats_Really_Inside__Little_Red_King_192.mp3",
-    ambient: "http://www.dokapi.de/music/dokapi-continental_drift-01-lighthouse.mp3",
-    blues: "http://www.ovenmittjohnson.com/mp3s/01_Hot_Guitar.mp3"
+    improvisation: "http://hosting.tropo.com/5055259/www/hold-music/Whats_Really_Inside__Little_Red_King_192.mp3",
+    ambient: "http://hosting.tropo.com/5055259/www/hold-music/dokapi-continental_drift-01-lighthouse.mp3",
+    blues: "http://hosting.tropo.com/5055259/www/hold-music/01_Hot_Guitar.mp3"
 };
 
 say("Please select the type of music you'd like to hear while you wait for someone to answer.");
