@@ -6,14 +6,15 @@
 
 <?php
 
-$token = '(my token)';
-$token_secret = '(my token secret)';
-$consumer_key = '(my consumer key)';
-$consumer_secret = '(my consumer secret)';
+$token = '752613247807729664-h6qiah86XMpRLMwi61YXE1p2ADn28q2';
+$token_secret = '3mC601hdZzOC8ouA1UJZLlC9KJ79hewHVag4dRE0dZTvp';
+$consumer_key = 'HgHzgJ8zLQihhANv6NG5epHPU';
+$consumer_secret = 'nTW8bZm3Jclbkpg90gvHKZ371YhBL6fN8h14MaYUXSamgIncGg';
 
 $host = 'api.twitter.com';
 $method = 'POST';
 $path = '/1.1/statuses/update.json'; // api call path
+$url = "https://$host$path";
 
 $query = array( // query parameters
     'status' => $currentCall->initialText
@@ -41,7 +42,7 @@ ksort($arr); // primary sort (key)
 // the encoding step
 $querystring = urldecode(http_build_query($arr, '', '&'));
 
-$url = "https://$host$path";
+
 
 // mash everything together for the text to hash
 $base_string = $method."&".rawurlencode($url)."&".rawurlencode($querystring);
@@ -76,15 +77,5 @@ curl_setopt_array($feed, $options);
 $json = curl_exec($feed);
 curl_close($feed);
 
-$twitter_data = json_decode($json);
 
-
-foreach ($twitter_data as &$value) {
-   $tweetout .= preg_replace("/(http:\/\/|(www\.))(([^\s<]{4,68})[^\s<]*)/", '<a href="http://$2$3" target="_blank">$1$2$4</a>', $value->text);
-   $tweetout = preg_replace("/@(\w+)/", "<a href=\"http://www.twitter.com/\\1\" target=\"_blank\">@\\1</a>", $tweetout);
-   $tweetout = preg_replace("/#(\w+)/", "<a href=\"http://search.twitter.com/search?q=\\1\" target=\"_blank\">#\\1</a>", $tweetout);
-}
-
-//log($tweetout);
-//say("tweeted it.");
 ?>
