@@ -42,8 +42,6 @@ ksort($arr); // primary sort (key)
 // the encoding step
 $querystring = urldecode(http_build_query($arr, '', '&'));
 
-
-
 // mash everything together for the text to hash
 $base_string = $method."&".rawurlencode($url)."&".rawurlencode($querystring);
 
@@ -54,7 +52,7 @@ $key = rawurlencode($consumer_secret)."&".rawurlencode($token_secret);
 $signature = rawurlencode(base64_encode(hash_hmac('sha1', $base_string, $key, true)));
 
 
-$oauth['oauth_signature'] = $signature; // don't want to abandon all that work!
+$oauth['oauth_signature'] = $signature;
 ksort($oauth); // probably not necessary, but twitter's demo does it
 
 // also not necessary, but twitter's demo does this too
@@ -71,7 +69,7 @@ $options = array( CURLOPT_HTTPHEADER => array("Authorization: $auth"),
                   CURLOPT_RETURNTRANSFER => true,
                   CURLOPT_SSL_VERIFYPEER => false);
 
-// do our business
+// Finally!
 $feed = curl_init();
 curl_setopt_array($feed, $options);
 $json = curl_exec($feed);
