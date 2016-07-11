@@ -26,7 +26,7 @@ var myRecording = record("Record your 15-second message after the beep.", {
     }
 });
 
-say("Here's your damn message.");
+say("Here's your message.");
 //play it back with the temporary file.
 say(myRecording.value);
 
