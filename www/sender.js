@@ -5,17 +5,11 @@
  */
 
 var csvFile = loadFile("http://hosting.tropo.com/5055259/www/data/dialerNumbers.csv");
-log("csv file: " + csvFile);
 
 var numbersToDial = csvJSON(csvFile);
 
-
-log("json file: " + numbersToDial);
-log("number of records: " + numbersToDial.length);
-
 for (var i = 0; i<numbersToDial.length-1; i++){
     var callee = numbersToDial[i];
-    log("callee " + i + ": " + callee.name + " number: " + callee.number + " - end-line");
 
     call(callee.number);
     wait(1000);
