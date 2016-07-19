@@ -4,6 +4,12 @@
  * To Test: launch from dashboard
  */
 
+/*
+ * akalsey - The script works, but I don't know if it detects answering machines.
+ * It thinks my voicemail and the office answering machine are human. Is this a bug,
+ * feature, or am I doing something wrong?
+ */
+
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
