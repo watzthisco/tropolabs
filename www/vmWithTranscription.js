@@ -1,7 +1,7 @@
 /*
  * Tropo Learning Lab - Voicemail with Transcription
  * Level: Intermediate
- * To Test: call
+ * To Test: call 586-232-5973
  */
 
 var callerID = currentCall.callerID;
