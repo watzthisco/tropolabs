@@ -45,7 +45,7 @@ function listKeys(config){
     var arr=[];
 
     for (var i=0; i<config.length; i++) {
-        arr.push(config[i].language);
+        arr.push(i);
     }
     return arr.join(",");
 }
