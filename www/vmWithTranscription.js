@@ -21,6 +21,7 @@ var result = ask("For sales, press 1. For service, press 2.", {
             case 1:
                 transfer(myConfig.numbers[1], {
                     timeout: 15,
+                    playvalue: "http://www.phono.com/audio/holdmusic.mp3",
                     onTimeout: function () {
                         say("Thank you for calling sales. We're not available right now.");
                         record("Please record a message after the beep.", {
