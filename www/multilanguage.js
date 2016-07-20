@@ -15,7 +15,7 @@ var configuration = [
 
 say("Hello there my international friend!");
 var result = ask("What language would you like me to speak? " + listSelections(configuration), {
-    choices: listKeys(configuration.choices),
+    choices: listKeys(configuration),
     attempts: 3,
     onBadChoice: function() {
         say("I'm sorry, I didn't understand that.");
