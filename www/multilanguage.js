@@ -7,10 +7,10 @@
 
 //config object
 var configuration = [
-    {"language":"english","voice":"kate","message":"Hello"},
-    {"language":"spanish","voice":"juan","message":"Hola"},
-    {"language":"german","voice":"anna","message":"Guten Tag"},
-    {"language":"japanese","voice":"Otoya","message":"Kon'nichiwa"}
+    {"language":"english","recognizer":"en-us","voice":"kate","message":"Hello","question":"Please count to four."},
+    {"language":"spanish","recognizer":"es-es","voice":"juan","message":"Hola","question":"Por favor, contar hasta cuatro."},
+    {"language":"german","recognizer":"de-de","voice":"anna","message":"Guten Tag","question":"Bitte zählen zu vier."},
+    {"language":"french","recognizer":"fr-fr","voice":"Aurelie","message":"Bonjour","question":"S'il vous plaît compter jusqu'à quatre."}
 ];
 
 say("Hello there my international friend!");
@@ -27,6 +27,18 @@ var result = ask("What language would you like me to speak? " + listSelections(c
 
         say("You said " + language + ". ");
         say(message,{voice:voiceSelected});
+
+        ask(configuration[event.value].question, {
+            voice: voiceSelected,
+            choices:"[4 DIGITS]",
+            mode:"speech",
+            recognizer:configuration[event.value].recognizer,
+            onChoice: function(event) {
+                say(event.value, {voice:voiceSelected});
+            }
+
+        })
+
     }
 });
 
