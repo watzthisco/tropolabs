@@ -10,7 +10,7 @@ var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config
 
 var config = [
     {"department":"sales","phone":myConfig.numbers[0],"email":myConfig.email},
-    {"department":"service","phone":myConfig.numbers[0],"email":myConfig.email}];
+    {"department":"service","phone":myConfig.numbers[1],"email":myConfig.email}];
 
 var callerID = currentCall.callerID;
 var result = ask(listSelections(config), {
