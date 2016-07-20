@@ -24,15 +24,17 @@ var result = ask("What language would you like me to speak? " + listSelections(c
         var language = configuration[event.value].language;
         var message = configuration[event.value].message;
         var voiceSelected = configuration[event.value].voice;
+        var question = configuration[event.value].question;
+        var recognizer = configuration[event.value].recognizer;
 
         say("You said " + language + ". ");
         say(message,{voice:voiceSelected});
 
-        ask(configuration[event.value].question, {
+        ask(question, {
             voice: voiceSelected,
             choices:"[4 DIGITS]",
             mode:"speech",
-            recognizer:configuration[event.value].recognizer,
+            recognizer:recognizer,
             onChoice: function(event) {
                 say(event.value, {voice:voiceSelected});
             }
