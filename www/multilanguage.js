@@ -63,5 +63,5 @@ function listKeys(config){
     for (var i=0; i<config.length; i++) {
         arr.push(i);
     }
-    return arr.join(",");
+    return arr.join(" ");
 }
