@@ -27,7 +27,7 @@ var result = ask("What language would you like me to speak? " + listSelections(c
         var question = configuration[event.value].question;
         var recognizer = configuration[event.value].recognizer;
 
-        say("You said " + language + ". ");
+        //say("You said " + language + ". ");
         say(message,{voice:voiceSelected});
 
         ask(question, {
