@@ -14,7 +14,7 @@ var configuration = [
 ];
 
 say("Hello there my international friend!");
-var result = ask("What language would you like me to speak? " + listSelections(configuration), {
+ask("What language would you like me to speak? " + listSelections(configuration), {
     choices: listKeys(configuration),
     attempts: 3,
     mode: "dtmf",
@@ -47,10 +47,7 @@ var result = ask("What language would you like me to speak? " + listSelections(c
     }
 });
 
-function splitString(str){
-    var letterList = str.split("");
-    return letterList.join(" ");
-}
+
 
 function listSelections(config){
     var sayString = "";
@@ -67,4 +64,9 @@ function listKeys(config){
         arr.push(i);
     }
     return arr.join(",");
+}
+
+function splitString(str){
+    var letterList = str.split("");
+    return letterList.join(" ");
 }
