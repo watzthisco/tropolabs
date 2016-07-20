@@ -31,8 +31,6 @@ var result = ask("What language would you like me to speak? " + listSelections(c
 });
 
 
-//utility functions
-
 function listSelections(config){
     var sayString = "";
     for (var i=0; i<config.length; i++){
@@ -42,10 +40,6 @@ function listSelections(config){
 }
 
 function listKeys(config){
-    var arr=[];
-
-    for (var i=0; i<config.length; i++) {
-        arr.push(i);
-    }
-    return arr.join(",");
+    var keys = Object.keys(config);
+    return keys.join(",");
 }
