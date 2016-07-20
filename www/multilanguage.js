@@ -46,7 +46,7 @@ var result = ask("What language would you like me to speak? " + listSelections(c
 
 function splitString(str){
     var letterList = str.split("");
-    return letterList;
+    return letterList.join(",");
 }
 
 function listSelections(config){
