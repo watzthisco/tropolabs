@@ -20,7 +20,6 @@ ask("What language would you like me to speak? " + listSelections(configuration)
     mode: "dtmf",
     onBadChoice: function(event) {
         say("I'm sorry, I didn't understand that.");
-        log("@@BadChoice: " + event.value);
     },
     onChoice: function(event) {
         var language = configuration[event.value].language;
@@ -32,22 +31,22 @@ ask("What language would you like me to speak? " + listSelections(configuration)
         say("You said " + language + ". ");
         say(message,{voice:voiceSelected});
 
-        ask(question, {
-            voice: voiceSelected,
-            choices:"[4 DIGITS]",
-            mode:"speech",
-            recognizer:recognizer,
-            onChoice: function(event) {
-                say(splitString(event.value), {voice:voiceSelected});
-                log("@@What I said: " + event.value);
-            }
-
-        })
+        countToFourAsk(voiceSelected,recognizer,question);
 
     }
 });
 
-
+function countToFourAsk(voiceSelected,recognizer,question) {
+    ask(question, {
+        voice: voiceSelected,
+        choices:"[4 DIGITS]",
+        mode:"speech",
+        recognizer:recognizer,
+        onChoice: function(event) {
+            say(splitString(event.value), {voice:voiceSelected});
+        }
+    })
+}
 
 function listSelections(config){
     var sayString = "";
