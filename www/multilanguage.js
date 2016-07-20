@@ -21,9 +21,9 @@ var result = ask("What language would you like me to speak? " + listSelections(c
         say("I'm sorry, I didn't understand that.");
     },
     onChoice: function(event) {
-        var language = configuration[event.value-1].language;
-        var message = configuration[event.value-1].message;
-        var voiceSelected = configuration[event.value-1].voice;
+        var language = configuration[event.value].language;
+        var message = configuration[event.value].message;
+        var voiceSelected = configuration[event.value].voice;
 
         say("You said " + language + ". ");
         say(message,{voice:voiceSelected});
@@ -36,7 +36,7 @@ var result = ask("What language would you like me to speak? " + listSelections(c
 function listSelections(config){
     var sayString = "";
     for (var i=0; i<config.length; i++){
-        sayString += "Select " + i+1 + " for " + config[i].language + ". ";
+        sayString += "Select " + i + " for " + config[i].language + ". ";
     }
     return sayString;
 }
@@ -45,7 +45,7 @@ function listKeys(config){
     var arr=[];
 
     for (var i=0; i<config.length; i++) {
-        arr.push(choice.language);
+        arr.push(config[i].language);
     }
     return arr.join(",");
 }
