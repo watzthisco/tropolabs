@@ -18,8 +18,9 @@ var result = ask("What language would you like me to speak? " + listSelections(c
     choices: listKeys(configuration),
     attempts: 3,
     mode: "dtmf",
-    onBadChoice: function() {
+    onBadChoice: function(event) {
         say("I'm sorry, I didn't understand that.");
+        log("@@BadChoice: " + event.value);
     },
     onChoice: function(event) {
         var language = configuration[event.value].language;
@@ -38,6 +39,7 @@ var result = ask("What language would you like me to speak? " + listSelections(c
             recognizer:recognizer,
             onChoice: function(event) {
                 say(event.value, {voice:voiceSelected});
+                log("@@What I said: " + event.value);
             }
 
         })
