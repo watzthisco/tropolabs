@@ -36,7 +36,7 @@ var result = ask("What language would you like me to speak? " + listSelections(c
             mode:"speech",
             recognizer:recognizer,
             onChoice: function(event) {
-                say(event.value, {voice:voiceSelected});
+                say(splitString(event.value), {voice:voiceSelected});
             }
 
         })
@@ -44,6 +44,10 @@ var result = ask("What language would you like me to speak? " + listSelections(c
     }
 });
 
+function splitString(str){
+    var letterList = str.split("");
+    return letterList;
+}
 
 function listSelections(config){
     var sayString = "";
