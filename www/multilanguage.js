@@ -40,6 +40,10 @@ function listSelections(config){
 }
 
 function listKeys(config){
-    var keys = Object.keys(config);
-    return keys.join(",");
+    var arr=[];
+
+    for (var i=0; i<config.length; i++) {
+        arr.push(i);
+    }
+    return arr.join(",");
 }
