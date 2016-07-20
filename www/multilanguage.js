@@ -6,42 +6,24 @@
 
 
 //config object
-var configuration = {
-    "choices":
-    {
-        "1":"english",
-        "2":"spanish",
-        "3":"german",
-        "4":"japanese"
-    },
-    "voices":
-    {
-        "english":"kate",
-        "spanish":"juan",
-        "german":"anna",
-        "japanese":"Otoya"
-    },
-    "messages":
-    {
-        "english":"Hello",
-        "spanish":"Hola",
-        "german":"Guten Tag",
-        "japanese":"Kon'nichiwa"
-    }
-};
-
+var configuration = [
+    {"language":"english","voice":"kate","message":"Hello"},
+    {"language":"spanish","voice":"juan","message":"Hola"},
+    {"language":"german","voice":"anna","message":"Guten Tag"},
+    {"language":"japanese","voice":"Otoya","message":"Kon'nichiwa"}
+];
 
 say("Hello there my international friend!");
-var result = ask("What language would you like me to speak? " + listSelections(configuration.choices), {
+var result = ask("What language would you like me to speak? " + listSelections(configuration), {
     choices: listKeys(configuration.choices),
     attempts: 3,
     onBadChoice: function() {
         say("I'm sorry, I didn't understand that.");
     },
     onChoice: function(event) {
-        var language = configuration.choices[event.value];
-        var message = configuration.messages[language];
-        var voiceSelected = configuration.voices[language];
+        var language = configuration[event.value-1].language;
+        var message = configuration[event.value-1].message;
+        var voiceSelected = configuration[event.value-1].voice;
 
         say("You said " + language + ". ");
         say(message,{voice:voiceSelected});
@@ -53,10 +35,8 @@ var result = ask("What language would you like me to speak? " + listSelections(c
 
 function listSelections(config){
     var sayString = "";
-    for (var choice in config) {
-        if (config.hasOwnProperty(choice)) {
-            sayString += "Select " + choice + " for " + config[choice] + ". ";
-        }
+    for (var i=0; i<config.length; i++){
+        sayString += "Select " + i+1 + " for " + config[i].language + ". ";
     }
     return sayString;
 }
@@ -64,10 +44,8 @@ function listSelections(config){
 function listKeys(config){
     var arr=[];
 
-    for (var choice in config) {
-        if (config.hasOwnProperty(choice)) {
-            arr.push(choice);
-        }
+    for (var i=0; i<config.length; i++) {
+        arr.push(choice.language);
     }
     return arr.join(",");
 }
