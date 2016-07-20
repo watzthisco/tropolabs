@@ -19,7 +19,7 @@ var result = ask("For sales, press 1. For service, press 2.", {
 
         switch (userInput) {
             case 1:
-                transfer(myConfig.numbers[0], {
+                transfer(myConfig.numbers[1], {
                     timeout: 15,
                     onTimeout: function () {
                         say("Thank you for calling sales. We're not available right now.");
