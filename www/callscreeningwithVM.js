@@ -7,15 +7,16 @@
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
-var config = [
+var people = [
     {"name":"Eddy","phone":myConfig.numbers[0]},
     {"name":"Julie","phone":myConfig.numbers[1]}];
 
 // Set callerID to callerName if present, otherwise set to callerID
 var callerID = currentCall.callerName || currentCall.callerID;
+log("@@callername: " + currentCall.callerName);
 
-var result = ask(listSelections(config), {
-    choices: listKeys(config),
+var result = ask(listSelections(people), {
+    choices: listKeys(people),
     mode: "dtml",
     onChoice: function (result) {
 
