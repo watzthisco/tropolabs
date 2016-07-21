@@ -32,7 +32,9 @@ function transferCall(dept){
     transfer(config[dept].phone, {
         playvalue: "http://www.phono.com/audio/holdmusic.mp3",
         onConnect: function () {
-            ask("Call from: " + callerID + ". Press 1 to accept the call, press any other key to reject.", {
+            say("Call from:");
+            say(callerID);
+            ask("Press 1 to accept the call, press any other key to reject.", {
                 voice: "Ava",
                 choices: "1",
                 mode: "dtmf",
