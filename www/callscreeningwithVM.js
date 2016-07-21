@@ -46,12 +46,15 @@ function transferCall(person){
                     }
                     if (choice === 2) {
                         say("Sending to voicemail");
-                        // this doesn't work?
+                        // this doesn't work. It's just connecting the call anyway.
+                        // somehow I need to just hang up the callee and then move on
+                        // to the sendToVoicemail function.
                         sendToVoicemail(person);
                     }
                 },
                 onBadChoice: function () {
                     say("I don't understand.");
+
                 }
             });
         },
@@ -59,6 +62,7 @@ function transferCall(person){
             say("Sorry, there was no answer.");
         }
     });
+    sendToVoicemail(person);
 }
 
 function sendToVoicemail(person){
