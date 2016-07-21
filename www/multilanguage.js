@@ -45,7 +45,7 @@ function countToFourAsk(voiceSelected,recognizer,question) {
         onChoice: function(event) {
             say(splitString(event.value), {voice:voiceSelected});
         }
-    })
+    });
 }
 
 function listSelections(config){

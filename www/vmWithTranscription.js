@@ -25,8 +25,7 @@ var result = ask(listSelections(config), {
         var userInput = parseInt(result.value);
 
         transferCall(userInput);
-
-        },
+    },
     onBadChoice: function () {
         say("That is not a valid option");
     }
@@ -39,12 +38,11 @@ function transferCall(dept){
         onTimeout: function () {
             say("Thank you for calling " + config[dept].department + ". We're not available right now.");
             record("Please record a message after the beep.", {
-                    beep:true,
-                    maxTime:30,
-                    transcriptionOutURI: "mailto:"+config[dept].email,
-                    transcriptionID:callerID
-                }
-            );
+                beep:true,
+                maxTime:30,
+                transcriptionOutURI: "mailto:"+config[dept].email,
+                transcriptionID:callerID
+            });
         }
     });
 }

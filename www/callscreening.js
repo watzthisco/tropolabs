@@ -7,64 +7,67 @@
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
-var result = ask("For sales, press 1. To talk to the manager, press 2.", {
-    choices: "1,2",
-    mode: "dtf",
+var config = [
+    {"dept":"sales","phone":myConfig.numbers[0]},
+    {"dept":"service","phone":myConfig.numbers[1]}];
+
+// Set callerID to callerName if present, otherwise set to callerID
+var callerID = currentCall.callerName || currentCall.callerID;
+
+var result = ask(listSelections(config), {
+    choices: listKeys(config),
+    mode: "dtml",
     onChoice: function (result) {
 
-        if (parseInt(result.value) === 1) {
-            //transfer to sales
-            transfer(myConfig.numbers[1], {
-                playvalue: "http://www.phono.com/audio/holdmusic.mp3",
-                onConnect: function () {
-                    ask("Someone wants to talk to sales. Press 1 to accept the call, press any other key to reject.", {
-                        voice: "Ava",
-                        choices: "1",
-                        mode: "dtmf",
-                        onChoice: function () {
-                            say("Excellent. Connecting you now.");
-                        },
-                        onBadChoice: function () {
-                            say("Rejecting the call.");
-
-                        }
-                    });
-                },
-                onTimeout: function () {
-                    say("Sorry, there was no answer.");
-                }
-            });
-        } else {
-            //transfer to the manager
-            transfer(myConfig.numbers[0], {
-                playvalue: "http://www.phono.com/audio/holdmusic.mp3",
-                onConnect: function () {
-                    ask("Someone wants to talk to the manager. Press 1 to accept the call, press any other key to reject.",
-                        {
-                            voice: "Ava",
-                            choices: "1",
-                            mode: "dtmf",
-                            onChoice: function () {
-                                say("Excellent. Connecting you now.");
-                            },
-                            onBadChoice: function () {
-                                say("Rejecting the call. Goodbye.");
-                                hangup();
-                            }
-                        }
-                    );
-                },
-
-                onTimeout: function () {
-                    say("Sorry, there was no answer.");
-                }
-            });
-        }
+        say("Transferring.");
+        var userInput = parseInt(result.value);
+        transferCall(userInput);
     },
     onBadChoice: function () {
         say("That is not a valid option");
     }
 });
+
+function transferCall(dept){
+    transfer(config[dept].phone, {
+        playvalue: "http://www.phono.com/audio/holdmusic.mp3",
+        onConnect: function () {
+            ask("Call from: " + callerID + ". Press 1 to accept the call, press any other key to reject.", {
+                voice: "Ava",
+                choices: "1",
+                mode: "dtmf",
+                onChoice: function () {
+                    say("Excellent. Connecting you now.");
+                },
+                onBadChoice: function () {
+                    say("Rejecting the call.");
+
+                }
+            });
+        },
+        onTimeout: function () {
+            say("Sorry, there was no answer.");
+        }
+    });
+}
+
+function listSelections(config){
+    var sayString = "";
+    for (var i=0; i<config.length; i++){
+        sayString += "Select " + i + " for " + config[i].department + ". ";
+    }
+    return sayString;
+}
+
+function listKeys(config){
+    var arr=[];
+
+    for (var i=0; i<config.length; i++) {
+        arr.push(i);
+    }
+    return arr.join(",");
+}
+
 
 //file loading function.
 function load_json(url) {
