@@ -12,7 +12,7 @@ var config = [
     {"dept":"service","phone":myConfig.numbers[1]}];
 
 // Set callerID to callerName if present, otherwise set to callerID
-var callerID = currentCall.callerName || say_as(currentCall.callerID,"phone");
+var callerID = currentCall.callerName || currentCall.callerID;
 
 var result = ask(listSelections(config), {
     choices: listKeys(config),
@@ -33,7 +33,7 @@ function transferCall(dept){
         playvalue: "http://www.phono.com/audio/holdmusic.mp3",
         onConnect: function () {
             say("Call from:");
-            say(callerID);
+            say(say_as(callerID,"phone"));
             ask("Press 1 to accept the call, press any other key to reject.", {
                 voice: "Ava",
                 choices: "1",
