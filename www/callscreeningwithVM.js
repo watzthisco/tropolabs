@@ -46,7 +46,7 @@ function transferCall(person){
                     }
                     if (choice === 2) {
                         say("Sending to voicemail");
-                        hangup();
+                        // this doesn't work?
                         sendToVoicemail(person);
                     }
                 },
@@ -61,7 +61,7 @@ function transferCall(person){
     });
 }
 
-function sendtoVoicemail(person){
+function sendToVoicemail(person){
     var messageFileName = currentCall.callerID + "-" + Date.now() + ".mp3";
     record("Please record a message for " + person + " after the beep. Press pound when finished.", {
         beep:true,
