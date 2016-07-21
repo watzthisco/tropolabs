@@ -11,7 +11,8 @@ var config = [
     {"name":"Eddy","phone":myConfig.numbers[0]},
     {"name":"Julie","phone":myConfig.numbers[1]}];
 
-
+// Set callerID to callerName if present, otherwise set to callerID
+var callerID = currentCall.callerName || currentCall.callerID;
 
 var result = ask(listSelections(config), {
     choices: listKeys(config),
