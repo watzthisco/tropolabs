@@ -68,7 +68,7 @@ function sendtoVoicemail(person){
 function listSelections(config){
     var sayString = "";
     for (var i=0; i<config.length; i++){
-        sayString += "Select " + i + " for " + config[i].name + ". ";
+        sayString += "To speak with " + config[i].name + " press " + i + ".";
     }
     return sayString;
 }
