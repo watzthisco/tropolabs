@@ -46,6 +46,7 @@ function transferCall(person){
                     }
                     if (choice === 2) {
                         say("Sending to voicemail");
+                        hangup();
                         sendToVoicemail(person);
                     }
                 },
@@ -76,7 +77,7 @@ function sendtoVoicemail(person){
 function listSelections(config){
     var sayString = "";
     for (var i=0; i<config.length; i++){
-        sayString += "To speak with " + config[i].name + ", press " + i + ".";
+        sayString += "To speak with " + config[i].name + ", press " + i + ". ";
     }
     return sayString;
 }
