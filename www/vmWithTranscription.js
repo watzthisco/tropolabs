@@ -13,6 +13,7 @@ var config = [
     {"department":"service","phone":myConfig.numbers[1],"email":myConfig.email}];
 
 var callerID = currentCall.callerID;
+
 var result = ask(listSelections(config), {
     choices: listKeys(config),
     mode: "dtml",
@@ -21,23 +22,9 @@ var result = ask(listSelections(config), {
         say("Transferring.");
         var userInput = parseInt(result.value);
 
-        switch (userInput) {
-            case 0:
-                transferCall(userInput);
+        transferCall(userInput);
 
-                break;
-
-            case 1:
-                transferCall(userInput);
-
-                break;
-
-            default:
-                say("I don't know how you got to this message.");
-                break;
-        }
-
-    },
+        },
     onBadChoice: function () {
         say("That is not a valid option");
     }
