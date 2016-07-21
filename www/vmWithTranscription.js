@@ -14,6 +14,8 @@ var config = [
 
 var callerID = currentCall.callerID;
 
+say("Thank you for calling.");
+
 var result = ask(listSelections(config), {
     choices: listKeys(config),
     mode: "dtml",
