@@ -30,7 +30,7 @@ var result = ask(listSelections(people), {
 });
 
 function transferCall(person){
-    transfer(config[person].phone, {
+    transfer(people[person].phone, {
         playvalue: "http://www.phono.com/audio/holdmusic.mp3",
         onConnect: function () {
             say("Call from:");
