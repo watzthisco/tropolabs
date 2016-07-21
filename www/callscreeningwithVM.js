@@ -1,18 +1,17 @@
 /*
- * Tropo Learning Lab - Call Screening
+ * Tropo Learning Lab - Call Screening with Voicemail
  * Level: Intermediate
- * To Test: call 586-232-5936
+ * To Test: call 586-232-5974
  */
 
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/config.json"));
 
 var config = [
-    {"dept":"sales","phone":myConfig.numbers[0]},
-    {"dept":"service","phone":myConfig.numbers[1]}];
+    {"name":"Eddy","phone":myConfig.numbers[0]},
+    {"name":"Julie","phone":myConfig.numbers[1]}];
 
-// Set callerID to callerName if present, otherwise set to callerID
-var callerID = currentCall.callerName || currentCall.callerID;
+
 
 var result = ask(listSelections(config), {
     choices: listKeys(config),
@@ -28,13 +27,13 @@ var result = ask(listSelections(config), {
     }
 });
 
-function transferCall(dept){
-    transfer(config[dept].phone, {
+function transferCall(person){
+    transfer(config[person].phone, {
         playvalue: "http://www.phono.com/audio/holdmusic.mp3",
         onConnect: function () {
             say("Call from:");
             say(say_as(callerID,"phone"));
-            ask("Press 1 to accept the call, press any other key to reject.", {
+            ask("Press 1 to accept the call, press any other key to send to voicemail.", {
                 voice: "Ava",
                 choices: "1",
                 mode: "dtmf",
@@ -42,8 +41,8 @@ function transferCall(dept){
                     say("Excellent. Connecting you now.");
                 },
                 onBadChoice: function () {
-                    say("Rejecting the call.");
-
+                    say("Sending to voicemail");
+                    sendToVoicemail(person);
                 }
             });
         },
@@ -53,6 +52,19 @@ function transferCall(dept){
     });
 }
 
+function sendtoVoicemail(person){
+    var messageFileName = currentCall.callerID + "-" + Date.now() + ".mp3";
+    record("Please record a message for " + person + " after the beep. Press pound when finished.", {
+        beep:true,
+        maxTime:60,
+        terminator:'#',
+        recordFormat: "audio/mp3",
+        recordURI: myConfig.ftp.host + "/www/audio/"+ config[person].name + "/" + messageFileName,
+        recordUser: myConfig.ftp.user,
+        recordPassword: myConfig.ftp.pass
+    });
+
+}
 function listSelections(config){
     var sayString = "";
     for (var i=0; i<config.length; i++){
