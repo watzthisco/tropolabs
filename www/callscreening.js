@@ -12,7 +12,7 @@ var config = [
     {"dept":"service","phone":myConfig.numbers[1]}];
 
 // Set callerID to callerName if present, otherwise set to callerID
-var callerID = currentCall.callerName || currentCall.callerID;
+var callerID = currentCall.callerName || say_as(currentCall.callerID,"phone");
 
 var result = ask(listSelections(config), {
     choices: listKeys(config),
@@ -68,6 +68,21 @@ function listKeys(config){
     return arr.join(",");
 }
 
+function say_as(value,type){
+    log("@@ The first character is: " + value.charAt(0));
+
+    if (value.charAt(0) === 43){ // look for leading + and remove it
+        value = value.substring(1);
+    }
+
+    log("@@ The value is: " + value);
+    var ssml_start="<?xml version='1.0'?><speak>";
+    var ssml_end="</say-as></speak>";
+    var ssml ="<say-as interpret-as='vxml:"+ type + "'>" + value + "";
+    var complete_string = ssml_start + ssml + ssml_end;
+    log("@@ Say as: " + complete_string);
+    return complete_string;
+}
 
 //file loading function.
 function load_json(url) {
