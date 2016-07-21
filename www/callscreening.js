@@ -54,7 +54,7 @@ function transferCall(dept){
 function listSelections(config){
     var sayString = "";
     for (var i=0; i<config.length; i++){
-        sayString += "Select " + i + " for " + config[i].department + ". ";
+        sayString += "Select " + i + " for " + config[i].dept + ". ";
     }
     return sayString;
 }
