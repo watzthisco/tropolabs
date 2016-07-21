@@ -35,16 +35,22 @@ function transferCall(person){
         onConnect: function () {
             say("Call from:");
             say(say_as(callerID,"phone"));
-            ask("Press 1 to accept the call, press any other key to send to voicemail.", {
+            ask("Press 1 to accept the call, press 2 to send to voicemail.", {
                 voice: "Ava",
-                choices: "1",
+                choices: "1,2",
                 mode: "dtmf",
-                onChoice: function () {
-                    say("Excellent. Connecting you now.");
+                onChoice: function (event) {
+                    var choice = parseInt(event.value);
+                    if (choice === 1) {
+                        say("Excellent. Connecting you now.");
+                    }
+                    if (choice === 2) {
+                        say("Sending to voicemail");
+                        sendToVoicemail(person);
+                    }
                 },
                 onBadChoice: function () {
-                    say("Sending to voicemail");
-                    sendToVoicemail(person);
+                    say("I don't understand.");
                 }
             });
         },
