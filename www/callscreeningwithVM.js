@@ -62,7 +62,6 @@ function transferCall(person){
             say("Sorry, there was no answer.");
         }
     });
-    sendToVoicemail(person);
 }
 
 function sendToVoicemail(person){
