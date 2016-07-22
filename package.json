@@ -19,5 +19,8 @@
   "homepage": "https://github.com/watzthisco/tropolabs#readme",
   "devDependencies": {
     "eslint": "^3.0.1"
+  },
+  "dependencies": {
+    "ciscospark": "^0.6.8"
   }
 }

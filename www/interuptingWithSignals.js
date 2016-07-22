@@ -5,7 +5,7 @@
  * Call 586-232-5981
  * Look in the Logs for 'The Session ID is ' to find out the session-id
  * Input the sessionID into this URL:
- * https://api.tropo.com/1.0/sessions/178f3d5e277fbe483a9c45749bd61afa/signals?action=signal&value=exit
+ * https://api.tropo.com/1.0/sessions/[sessionId]/signals?action=signal&value=exit
  * Open the url in a browser.
  */
 
