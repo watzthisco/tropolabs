@@ -9,31 +9,50 @@
 </head>
 <body>
 <input type="button" value="click me to add a number" id="activate" />
+<div id="result"></div>
+
 <script>
-    /*
-     * What am I doing wrong?
-     *
-     * Here's what I get when I try this:
-     *
-     * XMLHttpRequest cannot load https://api.tropo.com/v1/applications/5062421/addresses.
-     * No 'Access-Control-Allow-Origin' header is present on the requested resource.
-     * Origin 'http://www.watzthis.com' is therefore not allowed access. The response
-     * had HTTP status code 401.
-     * Need to use "basic authentication", perhaps? Doesn't seem to work, though.
-     */
+
+    var USERNAME = "watzthisco";
+    var PASSWORD = "WatzThis@Tropo";
+
     $(function() {
 
         $("#activate").on("click",function(){
-            console.log("test");
             $.ajax({
+                url: "https://api.tropo.com/v1/applications/5064888/addresses",
                 method: "POST",
-                url: "https://d2F0enRoaXNjbw==:V2F0elRoaXNAVHJvcG8=@api.tropo.com/v1/applications/5062421/addresses",
+                headers: {
+                    "Authorization": "Basic " + btoa(USERNAME + ":" + PASSWORD)
+                },
                 data: {
-                    "token": "7a70664b68694774426671644357666a4f51754f6c467162704148547a6568454e4f644d706b726c79465774",
+                    "token":"786a4a716c454f796671686a674a5655786e78476b7a424f6b55776b52664a4c6d467a6747704f44634e4567",
                     "type":"number",
-                    "prefix":"1586"}
+                    "prefix":"1586"
+                }
+
             }).done(function(msg) {
-                alert("Response: " + msg);
+                $('#result').html(msg);
+            }).fail(function (jqXHR, exception) {
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Didn\'t connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                $('#result').html(msg);
+            }).always(function() {
+                alert("complete");
             });
 
         });
