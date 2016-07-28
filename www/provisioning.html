@@ -15,6 +15,7 @@
 
     var USERNAME = "watzthisco";
     var PASSWORD = "WatzThis@Tropo";
+    var newNumber;
 
     $(function() {
 
@@ -26,13 +27,12 @@
                     "Authorization": "Basic " + btoa(USERNAME + ":" + PASSWORD)
                 },
                 data: {
-                    "token":"786a4a716c454f796671686a674a5655786e78476b7a424f6b55776b52664a4c6d467a6747704f44634e4567",
-                    "type":"number",
-                    "prefix":"1586"
+                    "type":"number"
                 }
 
             }).done(function(msg) {
-                $('#result').html(msg);
+                newNumber = msg.href.substr(msg.href.length - 11);
+                $('#result').html("Here's your new number: " + newNumber);
             }).fail(function (jqXHR, exception) {
                 var msg = '';
                 if (jqXHR.status === 0) {
@@ -52,7 +52,7 @@
                 }
                 $('#result').html(msg);
             }).always(function() {
-                alert("complete");
+                alert("ta-da!");
             });
 
         });
