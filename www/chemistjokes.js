@@ -1,21 +1,13 @@
 /*
  * Tropo Learning Lab - Auto Attendant with Data
  * Level: Intermediate
- * TODO: make it get data from a CouchDB database to populate menu and get responses.
+ * TODO: make it get data from a database to populate menu and get responses.
  * To Test: call 313-451-6844
  */
+//load an external json file with settings.
+var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/dbconfig.json"));
 
-var chemistJokes = [
-    "Don't trust atoms, they make up everything.",
-    "Have you heard the one about a chemist who was reading a book about helium? He just couldn't put it down.",
-    "Why do chemists like nitrates so much? They're cheaper than day rates.",
-    "What do you do with a sick chemist? If you can't helium, and you can't curium, then you might as well barium.",
-    "What did the scientist say when he found 2 isotopes of helium? HeHe",
-    "Why was the mole of oxygen molecules excited when he walked out of the singles bar? He got Avogadro's number!",
-    "Old chemists never die, they just stop reacting.",
-    "If you're not part of the solution, you're part of the precipitate.",
-    "Two chemists go into a restaurant. The first one says 'I think I'll have an H2O.' The second one says 'I think I'll have an H2O too' -- and he died."
-];
+var chemistJokes = JokesModel.findAll();
 
 say("Thank you for calling the Chemistry Joke Hotline.");
 say("Please hold on while I pick a joke for you.");
@@ -27,4 +19,64 @@ say(joke);
 wait(3000);
 say("Goodbye.");
 wait(1000);
-    
+
+var DATABASE = {
+
+    database: myConfig.dbconfig.dbname,
+    host: myConfig.dbconfig.host,
+    username: myConfig.dbconfig.user,
+    password: myConfig.dbconfig.pass,
+
+};
+
+function JokesModel(properties) {
+    for (var p in properties) {
+        this[p] = properties[p];
+    }
+}
+
+JokesModel.findAll = function() {
+    var results = [];
+
+    var jsConnectionObj = new Packages.MysqlConnection();
+    c = jsConnectionObj.open(DATABASE.host,
+        DATABASE.database,
+        DATABASE.username,
+        DATABASE.password);
+
+    if (c) {
+        var s = c.createStatement();
+        s.executeQuery("SELECT * FROM chemistry_jokes;");
+        var rs = s.getResultSet();
+        while (rs.next()) {
+            results.push(new ArticleModel({
+                id: rs.getInt("id"),
+                joke: rs.getString("joke"),
+            }));
+        }
+        rs.close();
+        c.close();
+        return results;
+    }
+}
+
+//file loading function.
+function load_json(url) {
+    var line;
+    var returnJSON = "";
+    connection = new java.net.URL(url).openConnection();
+    connection.setDoOutput(false);
+    connection.setDoInput(true);
+    connection.setInstanceFollowRedirects(false);
+    connection.setRequestMethod("GET");
+    connection.setRequestProperty("Content-Type", "text/plain");
+    connection.setRequestProperty("charset", "utf-8");
+    connection.connect();
+
+    var dis = new java.io.DataInputStream(connection.getInputStream());
+    while (dis.available() != 0) {
+        line = dis.readLine();
+        returnJSON += line;
+    }
+    return returnJSON;
+}
