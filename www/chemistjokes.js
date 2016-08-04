@@ -7,7 +7,7 @@
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/dbconfig.json"));
 
-var chemistJokes = JokesModel.findAll();
+var chemistJokes = findAll();
 
 say("Thank you for calling the Chemistry Joke Hotline.");
 say("Please hold on while I pick a joke for you.");
@@ -29,13 +29,7 @@ var DATABASE = {
 
 };
 
-function JokesModel(properties) {
-    for (var p in properties) {
-        this[p] = properties[p];
-    }
-}
-
-JokesModel.findAll = function() {
+function findAll() {
     var results = [];
 
     var jsConnectionObj = new Packages.MysqlConnection();
