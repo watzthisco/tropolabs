@@ -3,6 +3,17 @@
  * Level: Intermediate
  * TODO: make it get data from a database to populate menu and get responses.
  * To Test: call 313-451-6844
+ * Notes: this method below isn't going to work, but just in case, here's where I got the code below:
+ * http://stackoverflow.com/questions/298057/are-there-javascript-bindings-for-mysql
+ *
+ * I think I need to do a post to a server-side script that will get the data from mysql,
+ * like here: https://gist.github.com/mheadd/700939#file_my_script.php
+ *
+ * More links:
+ * https://support.tropo.com/hc/en-us/community/posts/203472793-Mysql-Integration
+ * https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino/Scripting_Java
+ * https://www.tropo.com/2010/11/connecting-to-an-external-database-with-tropo-scripting/
+ *
  */
 //load an external json file with settings.
 var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/dbconfig.json"));
