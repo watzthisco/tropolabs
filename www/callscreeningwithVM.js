@@ -49,6 +49,7 @@ function transferCall(person){
                         // this doesn't work. It's just connecting the call anyway.
                         // somehow I need to just hang up the callee and then move on
                         // to the sendToVoicemail function.
+                        hangup();
                         sendToVoicemail(person);
                     }
                 },
