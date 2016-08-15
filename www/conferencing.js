@@ -1,12 +1,6 @@
 /*
  * Tropo Learning Lab - Conferencing
  * Level: Intermediate
- * todo: figure out how to have the app call someone and place them into conference
- * Create an outbound call application that accepts passed parameters, including the numberToDial
- * and the conferenceID, like this: Then launch the app twice, using a REST request (either a GET
- * or a POST), passing in a different phone number each time, but the same conference ID. This doc
- * page explains the REST request portion: https://www.tropo.com/docs/rest/starting_session.htm
- * https://support.tropo.com/hc/en-us/community/posts/203466443-call-people-into-conference
  */
 
 //load an external json file with settings.
