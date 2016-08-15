@@ -37,13 +37,14 @@ function addPeople(){
                 }
             });
 
-        ask("Enter another 10-digit number of someone to add to the conference.",
-            {
-                choices: "[10 DIGITS]",
-                onChoice: function (event) {
-                    addPerson(event.value,conferenceID);
-                }
-            });
+        say("You will now be placed into the conference");
+        conference(conferenceID, {
+            terminator: "*",
+            playTones: true,
+            onChoice: function(event) {
+                say("Disconnecting");
+            }
+        });
 }
 
 function addPerson(numberToDial,conferenceID){
