@@ -48,14 +48,7 @@ function addPeople(){
 }
 
 function addPerson(numberToDial,conferenceID){
-    //the GET isn't working. The url that it builds works if I paste it into a browser, though.
     say("Calling them now.");
-
-
-    var _conn;
-    var _cm;
-    var _chat;
-
 
     importPackage(java.io, java.net, javax.xml.xpath, org.xml.sax);
     var url = "http://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
