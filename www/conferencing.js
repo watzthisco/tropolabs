@@ -55,7 +55,7 @@ function addPeople(){
 
 function addPerson(numberToDial,conferenceID){
     say("Calling them now.");
-    var url = "https://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial=+1"+numberToDial+"&conferenceID="+conferenceID;
+    var url = "https://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
     log("@@url: " + url);
     connection = new java.net.URL(url).openConnection();
     connection.setDoOutput(false);
