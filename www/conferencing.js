@@ -22,6 +22,17 @@ function makeConfID(){
             }
         });
 }
+
+function addPerson(numberToDial,conferenceID){
+    say("Calling them now.");
+
+    importPackage(java.io, java.net, javax.xml.xpath, org.xml.sax);
+    var url = "http://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
+    log("@@url: " + url);
+    var url = new URL(url);
+    var urlStream = url.openStream();
+}
+
 function addPeople(){
     ask("Enter a 10-digit number of someone to add to the conference.",
         {
@@ -40,17 +51,6 @@ function addPeople(){
         }
     });
 }
-
-function addPerson(numberToDial,conferenceID){
-    say("Calling them now.");
-
-    importPackage(java.io, java.net, javax.xml.xpath, org.xml.sax);
-    var url = "http://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
-    log("@@url: " + url);
-    var url = new URL(url);
-    var urlStream = url.openStream();
-}
-
 
 //file loading function.
 function load_json(url) {
