@@ -30,7 +30,9 @@ function makeConfID(){
 }
 function addPeople(){
     var shouldAdd = true;
+/*
     while (shouldAdd === true) {
+*/
         ask("Enter a 10-digit number of someone to add to the conference.",
             {
                 choices: "[10 DIGITS]",
@@ -39,15 +41,15 @@ function addPeople(){
                 }
             });
 
-        ask("Would you like to add another person?",{
+/*        ask("Would you like to add another person?",{
             choices: "yes,no",
             onChoice: function(event){
                 if(event.value === "no"){
                     shouldAdd = false;
                 }
             }
-        });
-    }
+        });*/
+/*    }*/
 
 }
 
