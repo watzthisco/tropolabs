@@ -50,16 +50,18 @@ function addPeople(){
 function addPerson(numberToDial,conferenceID){
     //the GET isn't working. The url that it builds works if I paste it into a browser, though.
     say("Calling them now.");
+
+
+    var _conn;
+    var _cm;
+    var _chat;
+
+
+    importPackage(java.io, java.net, javax.xml.xpath, org.xml.sax);
     var url = "http://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
     log("@@url: " + url);
-    connection = new java.net.URL(url).openConnection();
-    connection.setDoOutput(false);
-    connection.setDoInput(true);
-    connection.setInstanceFollowRedirects(false);
-    connection.setRequestMethod("GET");
-    connection.setRequestProperty("Content-Type", "text/plain");
-    connection.setRequestProperty("charset", "utf-8");
-    connection.connect();
+    var url = new URL(url);
+    var urlStream = url.openStream();
 }
 
 
