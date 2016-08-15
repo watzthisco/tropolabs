@@ -4,6 +4,7 @@
 out
 gen
 config.json
+confconfig.json
 dbconfig.json
 node_modules
 data

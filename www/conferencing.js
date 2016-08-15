@@ -8,11 +8,16 @@
  * page explains the REST request portion: https://www.tropo.com/docs/rest/starting_session.htm
  * https://support.tropo.com/hc/en-us/community/posts/203466443-call-people-into-conference
  */
+
+//load an external json file with settings.
+var myConfig = JSON.parse(load_json("http://hosting.tropo.com/5055259/www/config/confconfig.json"));
+
 var conferenceID;
+var token = myConfig.token;
 
+makeConfID();
 
-
-
+addPeople();
 
 function makeConfID(){
     ask("Enter a 4-digit number to use as the conference ID",
@@ -47,7 +52,7 @@ function addPeople(){
 }
 
 function addPerson(numberToDial,conferenceID){
-    var url = "https://api.tropo.com/1.0/sessions?action=create&token="+config.token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
+    var url = "https://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
 
     connection = new java.net.URL(url).openConnection();
     connection.setDoOutput(false);
@@ -57,11 +62,26 @@ function addPerson(numberToDial,conferenceID){
     connection.setRequestProperty("Content-Type", "text/plain");
     connection.setRequestProperty("charset", "utf-8");
     connection.connect();
+}
 
-    /*var dis = new java.io.DataInputStream(connection.getInputStream());
+
+//file loading function.
+function load_json(url) {
+    var line;
+    var returnJSON = "";
+    connection = new java.net.URL(url).openConnection();
+    connection.setDoOutput(false);
+    connection.setDoInput(true);
+    connection.setInstanceFollowRedirects(false);
+    connection.setRequestMethod("GET");
+    connection.setRequestProperty("Content-Type", "text/plain");
+    connection.setRequestProperty("charset", "utf-8");
+    connection.connect();
+
+    var dis = new java.io.DataInputStream(connection.getInputStream());
     while (dis.available() != 0) {
         line = dis.readLine();
         returnJSON += line;
     }
-    return returnJSON;*/
+    return returnJSON;
 }
