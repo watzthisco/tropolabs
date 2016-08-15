@@ -29,10 +29,6 @@ function makeConfID(){
         });
 }
 function addPeople(){
-    var shouldAdd = true;
-/*
-    while (shouldAdd === true) {
-*/
         ask("Enter a 10-digit number of someone to add to the conference.",
             {
                 choices: "[10 DIGITS]",
@@ -41,21 +37,18 @@ function addPeople(){
                 }
             });
 
-/*        ask("Would you like to add another person?",{
-            choices: "yes,no",
-            onChoice: function(event){
-                if(event.value === "no"){
-                    shouldAdd = false;
+        ask("Enter another 10-digit number of someone to add to the conference.",
+            {
+                choices: "[10 DIGITS]",
+                onChoice: function (event) {
+                    addPerson(event.value,conferenceID);
                 }
-            }
-        });*/
-/*    }*/
-
+            });
 }
 
 function addPerson(numberToDial,conferenceID){
     say("Calling them now.");
-    var url = "https://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
+    var url = "http://api.tropo.com/1.0/sessions?action=create&token="+token+"&numberToDial="+numberToDial+"&conferenceID="+conferenceID;
     log("@@url: " + url);
     connection = new java.net.URL(url).openConnection();
     connection.setDoOutput(false);
