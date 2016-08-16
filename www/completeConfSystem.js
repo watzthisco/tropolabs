@@ -34,7 +34,7 @@ while (currentCall.isActive) {
                 } else {
 
                     if (pins[event.value] != '') {
-                        message(currentCall.callerID + 'has entered conference' + event.value + '.',
+                        message(currentCall.callerID + ' has entered conference ' + event.value + '.',
                             {
                                 to: pins[event.value], network: 'SMS'
                             });
@@ -43,6 +43,12 @@ while (currentCall.isActive) {
 
                     conference(event.value, {terminator: "#"});
 
+                    if (pins[event.value] != '') {
+                        message(currentCall.callerID + ' has left the conference ' + event.value + '.',
+                            {
+                                to: pins[event.value], network: 'SMS'
+                            });
+                    }
 
                 }
             }
