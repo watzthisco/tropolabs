@@ -1,3 +1,15 @@
+/*
+ * Tropo Learning Lab - Full-featured Conference Call System
+ * Level: Intermediate
+ * To Test: call 586-248-4893
+
+ */
+
+// An array of conference IDs and phone numbers to alert.
+// If a conference ID is used that has a phone number attached,
+// when someone joins or leaves that conference, the attached phone
+// number will get an SMS alerting them.
+
 var pins = [{"1234":"14075551212"},{"1337":"19255556789"},{"2600":""}];
 
 answer();
