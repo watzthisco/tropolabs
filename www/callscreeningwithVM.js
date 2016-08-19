@@ -46,9 +46,7 @@ function transferCall(person){
                     }
                     if (choice === 2) {
                         say("Sending the caller to voicemail");
-                        // this doesn't work. It's just connecting the call anyway.
-                        // somehow I need to just hang up the callee and then move on
-                        // to the sendToVoicemail function.
+                        // this doesn't work. It's hanging up both parties.
                         hangup();
 
                     }
@@ -65,6 +63,7 @@ function transferCall(person){
     });
 
     //transfer failed?
+    say ("I'm transfering you to voicemail.");
     sendToVoicemail(person);
     hangup();
 }
