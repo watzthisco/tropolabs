@@ -50,8 +50,7 @@ function transferCall(person){
                         // somehow I need to just hang up the callee and then move on
                         // to the sendToVoicemail function.
                         reject();
-                        sendToVoicemail(person);
-                        hangup();
+
                     }
                 },
                 onBadChoice: function () {
@@ -64,6 +63,8 @@ function transferCall(person){
             say("Sorry, there was no answer.");
         }
     });
+    sendToVoicemail(person);
+    hangup();
 }
 
 function sendToVoicemail(person){
