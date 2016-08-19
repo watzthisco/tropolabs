@@ -45,7 +45,7 @@ function transferCall(person){
                         say("Excellent. Connecting you now.");
                     }
                     if (choice === 2) {
-                        say("Sending to voicemail");
+                        say("Sending the caller to voicemail");
                         // this doesn't work. It's just connecting the call anyway.
                         // somehow I need to just hang up the callee and then move on
                         // to the sendToVoicemail function.
