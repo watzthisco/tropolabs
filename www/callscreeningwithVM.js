@@ -17,7 +17,7 @@ log("@@callername: " + currentCall.callerName);
 
 var result = ask(listSelections(people), {
     choices: listKeys(people),
-    mode: "dtml",
+    mode: "dtmf",
     onChoice: function (result) {
 
         say("Transferring.");
@@ -47,7 +47,7 @@ function transferCall(person){
 
                 },
                 onBadChoice: function () {
-                    say("Sending the caller to voicemail");
+                    say("Sending the caller to voicemail.");
                     // this doesn't work when I put it inside the onChoice, so I'm making
                     // any 'send to voicemail' option be a 'badChoice', which works.
                     hangup();
