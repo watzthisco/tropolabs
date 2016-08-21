@@ -67,6 +67,7 @@ function transferCall(person){
 }
 
 function sendToVoicemail(person){
+    log ("@@leaving voicemail for " + person + "with callerID " + currentCall.callerID);
     var messageFileName = currentCall.callerID + "-" + Date.now() + ".mp3";
     record("Please record a message for " + person + " after the beep. Press pound when finished.", {
         beep:true,
