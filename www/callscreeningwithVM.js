@@ -61,7 +61,7 @@ function transferCall(person){
     });
 
     //transfer failed
-    say ("I'm transfering you to voicemail.");
+    say ("I'm transfering you to voicemail now.");
     sendToVoicemail(person);
 
 }
