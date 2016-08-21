@@ -48,7 +48,8 @@ function transferCall(person){
                 },
                 onBadChoice: function () {
                     say("Sending the caller to voicemail");
-                    // this doesn't work. It's hanging up both parties.
+                    // this doesn't work when I put it inside the onChoice, so I'm making
+                    // any 'send to voicemail' option be a 'badChoice', which works.
                     hangup();
 
                 }
@@ -59,7 +60,7 @@ function transferCall(person){
         }
     });
 
-    //transfer failed?
+    //transfer failed
     say ("I'm transfering you to voicemail.");
     sendToVoicemail(person);
 
