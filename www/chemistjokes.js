@@ -36,7 +36,7 @@ var DATABASE = {
     database: myConfig.dbconfig.dbname,
     host: myConfig.dbconfig.host,
     username: myConfig.dbconfig.user,
-    password: myConfig.dbconfig.pass,
+    password: myConfig.dbconfig.pass
 
 };
 

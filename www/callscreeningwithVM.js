@@ -62,7 +62,7 @@ function transferCall(person){
     //transfer failed?
     say ("I'm transfering you to voicemail.");
     sendToVoicemail(person);
-    hangup();
+
 }
 
 function sendToVoicemail(person){
