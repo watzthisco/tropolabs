@@ -74,7 +74,7 @@ function sendToVoicemail(person){
         maxTime:60,
         terminator:'#',
         recordFormat: "audio/mp3",
-        recordURI: myConfig.ftp.host + "/www/audio/"+ config[person].name + "/" + messageFileName,
+        recordURI: myConfig.ftp.host + "/www/audio/"+ person + "/" + messageFileName,
         recordUser: myConfig.ftp.user,
         recordPassword: myConfig.ftp.pass
     });
