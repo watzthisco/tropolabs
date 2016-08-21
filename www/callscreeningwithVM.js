@@ -71,7 +71,6 @@ function sendToVoicemail(person){
     var messageFileName = currentCall.callerID + "-" + Date.now() + ".mp3";
     record("Please record a message for " + people[person].name + " after the beep. Press pound when finished.", {
         beep:true,
-        maxTime:60,
         terminator:'#',
         recordFormat: "audio/mp3",
         recordURI: myConfig.ftp.host + "/www/audio/"+ person + "/" + messageFileName,
