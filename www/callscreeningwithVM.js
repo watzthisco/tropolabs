@@ -37,22 +37,19 @@ function transferCall(person){
             say(say_as(callerID,"phone"));
             ask("Press 1 to accept the call, press 2 to send to voicemail.", {
                 voice: "Ava",
-                choices: "1,2",
+                choices: "1",
                 mode: "dtmf",
                 onChoice: function (event) {
                     var choice = parseInt(event.value);
                     if (choice === 1) {
                         say("Excellent. Connecting you now.");
                     }
-                    if (choice === 2) {
-                        say("Sending the caller to voicemail");
-                        // this doesn't work. It's hanging up both parties.
-                        hangup();
 
-                    }
                 },
                 onBadChoice: function () {
-                    say("I don't understand.");
+                    say("Sending the caller to voicemail");
+                    // this doesn't work. It's hanging up both parties.
+                    hangup();
 
                 }
             });
