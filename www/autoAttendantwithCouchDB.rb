@@ -1,4 +1,3 @@
-#
 # Tropo Learning Lab - Auto Attendant with Data
 # Level: Advanced
 # To Test: call 313-451-6844
