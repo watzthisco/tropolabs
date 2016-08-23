@@ -10,7 +10,7 @@ require 'rubygems'
 require 'net/http'
 require 'json'
 
-$numToDial = '+19167305777';
+$numToDial = '+19165555555';
 
 #This is the HTTP request for CouchDB class
 module Couch
