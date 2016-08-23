@@ -1,3 +1,12 @@
+/*
+ * Tropo Learning Lab - Auto Attendant with Data
+ * Level: Advanced
+ * To Test: call 313-451-6844
+ *
+ * Notes: Based on https://www.tropo.com/2012/03/couchdb-sms/
+ *
+ */
+
 require 'rubygems'
 require 'net/http'
 require 'json'
@@ -19,6 +28,7 @@ module Couch
 
     def get(uri)
       request(Net::HTTP::Get.new(uri))
+      req.basic_auth 'watzthis', 'watzthiscloud'
     end
 
     def put(uri, json)
