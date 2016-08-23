@@ -18,10 +18,12 @@ $numToDial = '+19167305777';
 module Couch
 
   class Server
-    def initialize(host, port, options = nil)
+    def initialize(host, port, options = nil, user="watzthis", pass="watzthiscloud")
       @host = host
       @port = port
       @options = options
+      @username = user
+      @password = pass
     end
 
     def delete(uri)
@@ -34,6 +36,7 @@ module Couch
 
     def put(uri, json)
       req = Net::HTTP::Put.new(uri)
+      req.basic_auth(@username, @password)
       req["content-type"] = "application/json"
       req.body = json
       request(req)
@@ -58,7 +61,7 @@ end
 
 #This is a helper method to get data from  couchDB
 def getCounchDBData
-  url = URI.parse("http://watzthis:watzthiscloud@watzthis.cloudant.com")
+  url = URI.parse("http://watzthis.cloudant.com")
   server = Couch::Server.new(url.host, url.port)
   res = server.get("/sms/currentUsers")
   json = res.body
@@ -69,7 +72,7 @@ def updateCouchDBData(callerID, extra)
 
   #Call the getCounchDBData method to get the database information
   json = getCounchDBData
-  url = URI.parse("http://watzthis:watzthiscloud@watzthis.cloudant.com")
+  url = URI.parse("http://watzthis.cloudant.com")
   server = Couch::Server.new(url.host, url.port)
   server.delete("/sms")
   server.put("/sms", "")
