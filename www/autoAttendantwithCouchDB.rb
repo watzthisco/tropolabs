@@ -71,8 +71,8 @@ def updateCouchDBData(callerID, extra)
   json = getCounchDBData
   url = URI.parse("http://watzthis:watzthiscloud@watzthis.cloudant.com")
   server = Couch::Server.new(url.host, url.port)
-  #server.delete("/sms")
-  #server.put("/sms", "")
+  server.delete("/sms")
+  server.put("/sms", "")
   sessions = json["people"]
 
 
