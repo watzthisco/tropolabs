@@ -68,7 +68,7 @@ def updateCouchDBData(callerID, extra)
 
   #Call the getCounchDBData method to get the database information
   json = getCounchDBData
-  url = URI.parse("ttp://watzthis.cloudant.com")
+  url = URI.parse("http://watzthis:watzthiscloud@watzthis.cloudant.com")
   server = Couch::Server.new(url.host, url.port)
   server.delete("/sms")
   server.put("/sms", "")
