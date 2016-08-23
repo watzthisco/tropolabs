@@ -28,7 +28,6 @@ module Couch
 
     def get(uri)
       request(Net::HTTP::Get.new(uri))
-      req.basic_auth 'watzthis', 'watzthiscloud'
     end
 
     def put(uri, json)
