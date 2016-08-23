@@ -31,7 +31,9 @@ module Couch
     end
 
     def get(uri)
-      request(Net::HTTP::Get.new(uri))
+      req = Net::HTTP::Get.new(uri)
+      req.basic_auth(@username, @password)
+      request(req)
     end
 
     def put(uri, json)
