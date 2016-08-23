@@ -4,10 +4,11 @@
  * To Test: call
  *
  * Notes: Based on https://www.tropo.com/2012/03/couchdb-sms/
+ * I started to convert it to JS, but now I'm thinking it might just be better to make the existing ruby app work.
  *
  */
 
-
+var convoNum;
 var url = "http://watzthis.cloudant.com/sms/currentUsers";
 var currentUsers = JSON.parse(load_json(url));
 
@@ -17,8 +18,28 @@ var i = 1;
 var not_exit = true;
 var not_found = true;
 
-while (i < parseInt(sessions["total"])){
+while ((i < parseInt(sessions["total"]) && not_exit)){
 
+        if (currentCall.callerID === sessions['users'].callerID){
+            not_found = false;
+            not_exit = false;
+        }
+
+        if (extra === "back"){
+            convoNum = sessions['users'].convoNum - 1;
+            sessions['users'].convoNum = convoNum;
+        } else {
+            if (sessions['users'].convoNum < 3) {
+                convoNum = sessions['users'].convoNum +1;
+                sessions['users'].convoNum = convoNum;
+            }
+            if (sessions['users'].convoNum === 3) {
+                convoNum = sessions['users'].convoNum + 1;
+                sessions['users'].convoNum = convoNum;
+                sessions['users'].FinalMessage = '#{extra}';
+
+            }
+        }
 }
 
 
