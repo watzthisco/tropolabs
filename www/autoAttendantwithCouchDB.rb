@@ -57,7 +57,7 @@ end
 
 #This is a helper method to get data from  couchDB
 def getCounchDBData
-  url = URI.parse("http://watzthis.cloudant.com")
+  url = URI.parse("http://watzthis:watzthiscloud@watzthis.cloudant.com")
   server = Couch::Server.new(url.host, url.port)
   res = server.get("/sms/currentUsers")
   json = res.body
