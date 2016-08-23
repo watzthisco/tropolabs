@@ -4,9 +4,8 @@
 # To Test: call 313-451-6844
 #
 # Notes: Based on https://www.tropo.com/2012/03/couchdb-sms/
-#
-# getting authentication error. need to figure out how to pass basic auth?
-# seems like it might be working for the GET and DELETE now, but not for PUT?
+# Updated to use Cloudant and basic authentication
+
 
 require 'rubygems'
 require 'net/http'
