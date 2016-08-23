@@ -5,7 +5,7 @@
 #
 # Notes: Based on https://www.tropo.com/2012/03/couchdb-sms/
 #
-#
+# getting authentication error. need to figure out how to pass basic auth?
 
 require 'rubygems'
 require 'net/http'
