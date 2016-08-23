@@ -11,6 +11,7 @@ require 'rubygems'
 require 'net/http'
 require 'json'
 
+$numToDial = '+19167305777';
 
 #This is the HTTP request for CouchDB class
 module Couch
@@ -189,6 +190,7 @@ if $currentCall
   #There is no reason to keep the session alive, so we hangup
   hangup
 else
+
 
   #Grab the $numToDial parameter and initiate the SMS conversation
   call($numToDial, {
