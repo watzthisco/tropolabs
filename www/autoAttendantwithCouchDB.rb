@@ -1,11 +1,11 @@
-/*
- * Tropo Learning Lab - Auto Attendant with Data
- * Level: Advanced
- * To Test: call 313-451-6844
- *
- * Notes: Based on https://www.tropo.com/2012/03/couchdb-sms/
- *
- */
+#
+# Tropo Learning Lab - Auto Attendant with Data
+# Level: Advanced
+# To Test: call 313-451-6844
+#
+# Notes: Based on https://www.tropo.com/2012/03/couchdb-sms/
+#
+#
 
 require 'rubygems'
 require 'net/http'
