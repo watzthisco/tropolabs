@@ -27,7 +27,9 @@ module Couch
     end
 
     def delete(uri)
-      request(Net::HTTP::Delete.new(uri))
+      req = Net::HTTP::Delete.new(uri)
+      req.basic_auth(@username, @password)
+      request(req)
     end
 
     def get(uri)
